@@ -2,9 +2,14 @@
 # Hybrid Rocket Engine Acoustic Frequency Simulator
 
 ## Description
-A simulation model designed to predict the acoustic frequencies 
-produced by a nitrous oxide-paraffin hybrid rocket engine (HRE) 
-given a length and diameter.
+A simulation model designed to generate a PSD from a hybrid rocket engine 
+test fire and predict the gravitational root mean square by integration.
+
+## Functions, Inputs and Outputs
+This simulator uses video or audio input of a hybrid engine hotfire to 
+generate a PSD plot (power spectral density). The PSD plot is smoothened 
+using ___ method and then integrated using the ___ method to determine the 
+gravitational RMS (the overall severity of the vibrations felt by the engine).
 
 ## AI Statement
 Parts of this notebook were generated with the help of AI, 
