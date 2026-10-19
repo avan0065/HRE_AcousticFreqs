@@ -2,14 +2,14 @@
 # Hybrid Rocket Engine Acoustic Frequency Simulator
 
 ## Description
-A simulation model designed to generate a PSD from a hybrid rocket engine
-test fire and predict the gravitational root mean square by integration.
+A simulation model designed to generate a curve of the predicted primary 
+oscillation frequency using engine parameters set by the user. Tested against
+actual hotfire data.
 
 ## Functions, Inputs and Outputs
-This simulator uses video or audio input of a hybrid engine hotfire to
-generate a PSD plot (power spectral density). The PSD plot is smoothened
-using ___ method and then integrated using the ___ method to determine the
-gravitational RMS (the overall severity of the vibrations felt by the engine).
+This simulator uses user data input of a hybrid engine to
+generate a scatter plot of the frequency variation throughout a burn. The curve 
+plot is connected using the PCHIP method and then validated against actual data.
 
 ## AI Statement
 Parts of this notebook were generated with the help of AI,
