@@ -1,14 +1,13 @@
 import numpy as np
 import math
 
-def primary_oscillation(mdot, OF_ratio, P_c, L, R, T_av):
+def primary_oscillation(mdot, OF_ratio, P_c, L, R, T_av, D_min):
     """
     Calculates primary oscillation frequencies across a range of fuel grain port diameters.
     """
     freqs = [] # initialise the frequency array
     RT = R * T_av # find RT value from engine parameters
     # minimum diameter of the fuel grain port
-    D_min = np.arange(0.01, 20.0, 0.05)
     # loop through each port diameter value
     for d in D_min:
         area = math.pi * (d/2)**2 # area of fuel grain port
