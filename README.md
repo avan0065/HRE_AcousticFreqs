@@ -9,7 +9,8 @@ actual hotfire data.
 ## Functions, Inputs and Outputs
 This simulator uses user data input of a hybrid engine to
 generate a scatter plot of the frequency variation throughout a burn. The curve 
-plot is connected using the PCHIP method and then validated against actual data.
+plot is connected using the PCHIP method and then validated against actual data
+from an engine with the same parameters to test the model's accuracy.
 
 ## AI Statement
 Parts of this notebook were generated with the help of AI,
