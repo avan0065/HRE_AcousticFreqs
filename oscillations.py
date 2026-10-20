@@ -4,10 +4,32 @@ import math
 def primary_oscillation(mdot, OF_ratio, P_c, L, R, T_av, D_min):
     """
     Calculates primary oscillation frequencies across a range of fuel grain port diameters.
+
+    Parameters
+    ----------
+    mdot : float
+        Oxidiser mass flow rate [kg/s].
+    OF_ratio : float
+        Oxidiser-to-fuel ratio.
+    P_c : float
+        Chamber pressure [Pa].
+    L : float
+        Length of the combustion chamber [m].
+    R : float
+        Specific gas constant [J/(kg*K)].
+    T_av : float
+        Average combustion temperature [K].
+    D_min : array_like
+        Array of minimum fuel grain port diameters [m]. (not changed by user)
+
+    Returns
+    -------
+    freqs: list of floats
+        Calculated primary oscillation frequencies corresponding to each port diameter.
     """
+    
     freqs = [] # initialise the frequency array
     RT = R * T_av # find RT value from engine parameters
-    # minimum diameter of the fuel grain port
     # loop through each port diameter value
     for d in D_min:
         area = math.pi * (d/2)**2 # area of fuel grain port
