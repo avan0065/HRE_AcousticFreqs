@@ -3,12 +3,12 @@ import matplotlib.pyplot as plt
 from oscillations import primary_oscillation
 
 # USER CHANGE these parameters
-mdot = 0.245 # oxidiser mass flow [kg/s]
-OF_ratio = 2.8 # oxidiser/fuel ratio
-P_c = 750000 # chamber pressure [Pa]
-L = 0.45 # length of chamber [metres]
-R = 346.5 # gas constant [J/(kg*K)]
-T_av = 2500 # temperature [Kelvin]
+mdot = 1.5 # oxidiser mass flow [kg/s]
+OF_ratio = 6 # oxidiser/fuel ratio
+P_c = 1500000 # chamber pressure [Pa]
+L = 0.36 # length of chamber [metres]
+R = 464 # gas constant [J/(kg*K)]
+T_av = 3000 # temperature [Kelvin]
 
 # Define the range of diameters to calculate (regression)
 D_min = np.arange(0.02, 0.1, 0.01)
