@@ -1,7 +1,7 @@
-import numpy as np
-import math
 
 def primary_oscillation(mdot, OF_ratio, P_c, L, R, T_av, D_min):
+    import numpy as np
+    import math
     """
     Calculates primary oscillation frequencies across a range of fuel grain port diameters.
 
@@ -34,6 +34,6 @@ def primary_oscillation(mdot, OF_ratio, P_c, L, R, T_av, D_min):
     for d in D_min:
         area = math.pi * (d/2)**2 # area of fuel grain port
         G_0 = mdot / area # oxidiser mass flux through the fuel grain port
-        calculated_frequency = 0.2341 * (2 + (1/OF_ratio)) * ((G_0 * RT) / (L * P_c))
+        calculated_frequency = 0.2341 * (2 + (1 / OF_ratio)) * ((G_0 * RT) / (L * P_c))
         freqs.append(calculated_frequency)
     return freqs
