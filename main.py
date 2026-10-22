@@ -28,7 +28,7 @@ else:
     plot_freqs = freqs
 
 # Create the scatter plot
-plt.figure(figsize=(10, 6))
+plt.figure(figsize=(8, 5))
 plt.scatter(plot_D, plot_freqs, color='blue', alpha=0.7, edgecolors='black', label='Predicted Frequencies')
 plt.title('Predicted Primary Oscillation Frequency vs. Port Diameter')
 plt.xlabel('Fuel Grain Port Diameter (d) [m]')
