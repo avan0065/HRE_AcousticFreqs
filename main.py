@@ -11,7 +11,7 @@ R = 464 # gas constant [J/(kg*K)]
 T_av = 3000 # temperature [Kelvin]
 
 # Define the range of diameters to calculate (regression)
-D_min = np.arange(0.02, 0.05, 0.005)
+D_min = np.arange(0.04, 0.085, 0.005)
 
 # call the function
 freqs = primary_oscillation(mdot, OF_ratio, P_c, L, R, T_av, D_min)
