@@ -16,16 +16,8 @@ D_min = np.arange(0.04, 0.085, 0.005)
 # call the function
 freqs = primary_oscillation(mdot, OF_ratio, P_c, L, R, T_av, D_min)
 
-# Slice or pad to ensure they match if the module still has a hardcoded array shape
-if len(freqs) != len(D_min):
-    print(f"Warning: Length mismatch. Function returned {len(freqs)} values, but D_min has {len(D_min)} values.")
-    # Sync length for plotting
-    min_len = min(len(freqs), len(D_min))
-    plot_D = D_min[:min_len]
-    plot_freqs = freqs[:min_len]
-else:
-    plot_D = D_min
-    plot_freqs = freqs
+plot_D = D_min
+plot_freqs = freqs
 
 # Create the scatter plot
 plt.figure(figsize=(8, 5))
@@ -36,3 +28,5 @@ plt.ylabel('Frequency (f) [Hz]')
 plt.grid(True, which="both", ls="--", alpha=0.5)
 plt.legend()
 plt.show()
+
+# 
