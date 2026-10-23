@@ -2,15 +2,15 @@
 # Hybrid Rocket Engine Acoustic Frequency Simulator
 
 ## Description
-A simulation model designed to generate a curve of the predicted primary 
-oscillation frequency using engine parameters set by the user. Tested against
-actual hotfire data.
+A simulation model designed to generate a curve of the primary oscillation frequency 
+of Solaris MkII, Monash High Powered Rocketry's flagship hybrid engine. The resulting 
+curve is tested against the predicted analytical primary oscillations of the same engine.
 
 ## Functions, Inputs and Outputs
-This simulator uses user data input of a hybrid engine to
-generate a scatter plot of the frequency variation throughout a burn. The curve 
-plot is connected using the PCHIP method and then validated against actual data
-from an engine with the same parameters to test the model's accuracy.
+This simulator uses defined inputs of the specific engine parameters and data from a prior
+Matlab analysis. The curve plot is interpolated using the PCHIP method and then validated 
+against additional data from the same engine to test the model's accuracy and the analytical
+model of the engine oscillations.
 
 ## AI Statement
 Parts of this notebook were generated with the help of AI,
