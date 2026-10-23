@@ -13,7 +13,7 @@ T_av = 3000 # temperature [Kelvin]
 
 # Fuel grain diameter data and frequency data from Matlab
 D_fuelgrain = np.array([0.045, 0.07577, 0.05, 0.078, 0.048, 0.083])
-solaris_freqs = np.array([884.77, 208.01, 292.97, 216.80, 732.42, 222.66])
+solaris_freqs = np.array([884.77, 208.01, 612.97, 216.80, 732.42, 222.66])
 
 # Define the range of diameters to calculate
 D_min = np.arange(0.04, 0.085, 0.005)
