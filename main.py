@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from oscillations import primary_oscillation
 from pchipinterpolation import plot_pchip_interpolation
+from akimainterpolation import plot_akima_interpolation
 
 # Engine parameters
 mdot = 1.5 # oxidiser mass flow [kg/s]
@@ -24,41 +25,22 @@ freqs = primary_oscillation(mdot, OF_ratio, P_c, L, R, T_av, D_min)
 # Call the PCHIP interpolator function
 pchip_model = plot_pchip_interpolation(D_fuelgrain, solaris_freqs)
 
+# Call the Akima interpolator function
+akima_model = plot_akima_interpolation(D_fuelgrain, solaris_freqs)
+
 # Generate a fine range of diameter values for a smooth curve
 D_fine = np.linspace(D_fuelgrain.min(), D_fuelgrain.max(), 300)
 freqs_pchip = pchip_model(D_fine)
+freqs_akima = akima_model(D_fine)
 
-# Figure 1: Side-by-Side Plots (Analytical and Experimental)
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
-
-# Subplot 1: Analytical
-ax1.scatter(D_min, freqs, color='black', label='Analytical Frequencies')
-ax1.plot(D_min, freqs, color='blue')
-ax1.set_title('Calculated Primary Oscillation Frequency')
-ax1.set_xlabel('Fuel Grain Port Diameter (d) [m]')
-ax1.set_ylabel('Frequency (f) [Hz]')
-ax1.grid(True, which="both", ls="--", alpha=0.5)
-ax1.legend()
-
-# Subplot 2: Experimental PCHIP
-ax2.plot(D_fine, freqs_pchip, color='darkorange', label='PCHIP Interpolation')
-ax2.scatter(D_fuelgrain, solaris_freqs, color='black', s=50, zorder=5, label='Experimental Points')
-ax2.set_title('PCHIP Interpolation of Experimental Data')
-ax2.set_xlabel('Fuel Grain Port Diameter (d) [m]')
-ax2.set_ylabel('Frequency (f) [Hz]')
-ax2.grid(True, which="both", ls="--", alpha=0.5)
-ax2.legend()
-
-plt.tight_layout()
-plt.show()
-
-# Figure 2: Overlaid Plot
+# Figure 1: Overlaid Plot (systematic error)
 plt.figure(figsize=(8, 5))
 plt.scatter(D_min, freqs, color='black', marker='s', label='Analytical Frequencies')
 plt.plot(D_min, freqs, color='blue')
 plt.plot(D_fine, freqs_pchip, color='darkorange', label='PCHIP Interpolation (Experimental)')
 plt.scatter(D_fuelgrain, solaris_freqs, color='black', zorder=5, label='Experimental Points')
-plt.title('Comparison of Analytical Frequencies & PCHIP Experimental Trend')
+plt.plot(D_fine, freqs_akima, color='red', label='Akima Interpolation')
+plt.title('Comparison of Analytical Frequencies, PCHIP, and Akima Experimental Trends')
 plt.xlabel('Fuel Grain Port Diameter (d) [m]')
 plt.ylabel('Frequency (f) [Hz]')
 plt.grid(True, which="both", ls="--", alpha=0.5)
