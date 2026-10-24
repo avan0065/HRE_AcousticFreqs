@@ -7,10 +7,12 @@ of Solaris MkII, Monash High Powered Rocketry's flagship hybrid engine. The resu
 curve is tested against the predicted analytical primary oscillations of the same engine.
 
 ## Functions, Inputs and Outputs
-This simulator uses defined inputs of the specific engine parameters and data from a prior
-Matlab analysis. The curve plot is interpolated using the PCHIP method and then validated
-against additional data from the same engine to test the model's accuracy and the analytical
-model of the engine oscillations.
+This simulator uses defined inputs of the specific engine parameters and data from prior
+Matlab analysis. The curve plot is interpolated using the PCHIP and Akima methods and then 
+validated against the analytical model of the engine oscillations. 
+Oscillations.py produces the predicted analytical frequencies
+PCHIPInterpolation.py produces the PCHIP curve of the experimental data.
+AkimaInterpolation.py produces the Akima curve of the experimental data.
 
 ## AI Statement
 Parts of this notebook were generated with the help of AI,
