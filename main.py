@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import pandas as pd
 import sys
 import importlib
 if 'oscillations' in sys.modules:
@@ -20,7 +21,7 @@ L = 0.36 # length of chamber [metres]
 R = 302.3 # gas constant [J/(kg*K)]
 T_av = 2700 # temperature [Kelvin]
 
-# Fuel grain diameter data and frequency data from Matlab
+# Measured fuel grain diameter data and frequency data from Matlab
 D_fuelgrain = np.array([0.045, 0.07577, 0.05, 0.078, 0.048, 0.083])
 solaris_freqs = np.array([884.77, 208.01, 612.97, 216.80, 732.42, 222.66])
 
@@ -43,8 +44,8 @@ freqs_akima = akima_model(D_fine)
 
 # Figure 1: Overlaid Plot (just experimental data)
 plt.figure(figsize=(8, 5))
-plt.plot(D_fine, freqs_pchip, color='darkorange', label='PCHIP Interpolation')
 plt.scatter(D_fuelgrain, solaris_freqs, color='black', zorder=5, label='Experimental Points')
+plt.plot(D_fine, freqs_pchip, color='green', label='PCHIP Interpolation')
 plt.plot(D_fine, freqs_akima, color='red', label='Akima Interpolation')
 plt.title('Comparison of Analytical Frequencies, PCHIP, and Akima Experimental Trends')
 plt.xlabel('Fuel Grain Port Diameter (d) [m]')
@@ -57,8 +58,8 @@ plt.show()
 plt.figure(figsize=(8, 5))
 plt.scatter(D_min, freqs, color='black', marker='s', label='Analytical Frequencies')
 plt.plot(D_min, freqs, color='blue')
-plt.plot(D_fine, freqs_pchip, color='darkorange', label='PCHIP Interpolation')
 plt.scatter(D_fuelgrain, solaris_freqs, color='black', zorder=5, label='Experimental Points')
+plt.plot(D_fine, freqs_pchip, color='green', label='PCHIP Interpolation')
 plt.plot(D_fine, freqs_akima, color='red', label='Akima Interpolation')
 plt.title('Comparison of Analytical Frequencies, PCHIP, and Akima Experimental Trends')
 plt.xlabel('Fuel Grain Port Diameter (d) [m]')
@@ -75,6 +76,16 @@ y_akima = akima_model(D_min)
 rmse_pchip = np.sqrt(np.mean((freqs - y_pchip) ** 2))
 rmse_akima = np.sqrt(np.mean((freqs - y_akima) ** 2))
 
-print(f"PCHIP RMSE: {rmse_pchip:.4f} Hz")
-print(f"Akima RMSE: {rmse_akima:.4f} Hz")
+# Calculate MAE
+mae_pchip = np.mean(np.abs(freqs - y_pchip))
+mae_akima = np.mean(np.abs(freqs - y_akima))
+
+# Create comparison table
+metrics_data = {
+    'Interpolation Method': ['PCHIP', 'Akima'],
+    'MAE (Hz)': [mae_pchip, mae_akima],
+    'RMSE (Hz)': [rmse_pchip, rmse_akima]
+}
+df_metrics = pd.DataFrame(metrics_data)
+display(df_metrics.round(4))
 
