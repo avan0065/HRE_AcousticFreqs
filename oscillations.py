@@ -35,6 +35,6 @@ def primary_oscillation(mdot, OF_ratio, P_c, L, R, T_av, D_min):
         area = math.pi * (d/2)**2 # area of fuel grain port
         G_0 = (mdot / area) * (1 + 1 / OF_ratio) # total mass flux through the fuel grain port
         # calculated_frequency = 0.2341 * (2 + (1 / OF_ratio)) * ((G_0 * RT) / (L * P_c))
-        calculated_frequency = 2000 * (G_0 * RT) / (2 * math.pi * L * P_c)
+        calculated_frequency = (G_0 * RT) / (2 * math.pi * L * P_c)
         freqs.append(calculated_frequency)
     return freqs
