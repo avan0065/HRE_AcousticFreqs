@@ -1,5 +1,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import sys
+import importlib
+if 'oscillations' in sys.modules:
+    importlib.reload(sys.modules['oscillations'])
+if 'pchipinterpolation' in sys.modules:
+    importlib.reload(sys.modules['pchipinterpolation'])
+if 'akimainterpolation' in sys.modules:
+    importlib.reload(sys.modules['akimainterpolation'])
 from oscillations import primary_oscillation
 from pchipinterpolation import plot_pchip_interpolation
 from akimainterpolation import plot_akima_interpolation
@@ -9,15 +17,15 @@ mdot = 1.5 # oxidiser mass flow [kg/s]
 OF_ratio = 6 # oxidiser/fuel ratio
 P_c = 1500000 # chamber pressure [Pa]
 L = 0.36 # length of chamber [metres]
-R = 464 # gas constant [J/(kg*K)]
-T_av = 3000 # temperature [Kelvin]
+R = 302.3 # gas constant [J/(kg*K)]
+T_av = 2700 # temperature [Kelvin]
 
 # Fuel grain diameter data and frequency data from Matlab
 D_fuelgrain = np.array([0.045, 0.07577, 0.05, 0.078, 0.048, 0.083])
 solaris_freqs = np.array([884.77, 208.01, 612.97, 216.80, 732.42, 222.66])
 
 # Define the range of diameters to calculate
-D_min = np.arange(0.04, 0.09, 0.005)
+D_min = np.arange(0.045, 0.080, 0.0025)
 
 # Call analytical frequency function
 freqs = primary_oscillation(mdot, OF_ratio, P_c, L, R, T_av, D_min)
@@ -58,4 +66,15 @@ plt.ylabel('Frequency (f) [Hz]')
 plt.grid(True, which="both", ls="--", alpha=0.5)
 plt.legend()
 plt.show()
+
+# Evaluate interpolations at analytical diameter values
+y_pchip = pchip_model(D_min)
+y_akima = akima_model(D_min)
+
+# Calculate RMSE
+rmse_pchip = np.sqrt(np.mean((freqs - y_pchip) ** 2))
+rmse_akima = np.sqrt(np.mean((freqs - y_akima) ** 2))
+
+print(f"PCHIP RMSE: {rmse_pchip:.4f} Hz")
+print(f"Akima RMSE: {rmse_akima:.4f} Hz")
 
