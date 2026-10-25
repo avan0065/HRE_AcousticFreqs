@@ -110,5 +110,6 @@ metrics_data = {
     'RMSE (Hz)': [rmse_linear, rmse_pchip, rmse_akima],
     'Execution Time (ms)': [time_linear * 1000, time_pchip * 1000, time_akima * 1000]
 }
-df_metrics = pd.DataFrame(metrics_data)
-display(df_metrics.round(4))
+metrics_df = pd.DataFrame(metrics_data)
+print("\n--- Performance Evaluation Metrics ---")
+print(metrics_df.to_string(index=False))
