@@ -113,3 +113,12 @@ metrics_data = {
 metrics_df = pd.DataFrame(metrics_data)
 print("\n--- Performance Evaluation Metrics ---")
 print(metrics_df.to_string(index=False))
+
+if 'liner_size' in sys.modules:
+    importlib.reload(sys.modules['liner_size'])
+from liner_size import acoustic_liner
+
+# Calculate optimal liner size
+target_freq, best_diameter_m, best_freq = acoustic_liner(freqs_pchip, freqs_linear, R, T_av)
+print(f"The targeted frequency of the engine is {target_freq} Hz.")
+print(f"The optimal liner hole diameter is {best_diameter_m*1000} mm with a target frequency of {best_freq} Hz.")
