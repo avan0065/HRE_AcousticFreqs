@@ -1,7 +1,7 @@
 
 def acoustic_liner(freqs_pchip, freqs_linear, R, T_av):
     """
-    Determines the optimal neck diameter for an acoustic liner cavity to target 
+    Determines the optimal neck diameter for an acoustic liner cavity to target
     the average frequency calculated from interpolation models.
 
     Parameters
@@ -27,13 +27,13 @@ def acoustic_liner(freqs_pchip, freqs_linear, R, T_av):
 
     # Design target and parameters
     target_freq = np.mean([freqs_pchip.mean(), freqs_linear.mean()])
-    c_gas = np.sqrt(1.18 * R * T_av)
-    depth = 0.01 # depth of back cavity (between chamber wall and liner) [m]
-    t_liner = 0.003 # thickness of liner [m]
-    p_liner = 0.08 # porosity of the liner
+    c_gas = np.sqrt(1.18 * R * 800)
+    depth = 0.02 # depth of back cavity (between chamber wall and liner) [m]
+    t_liner = 0.005 # thickness of liner [m]
+    p_liner = 0.005 # porosity of the liner
 
     # Define the search range for hole diameters
-    neck_diameters_mm = np.linspace(1.0, 10.0, 100)
+    neck_diameters_mm = np.arange(1.0, 50.0, 0.5)
 
     best_diameter_m = None
     best_freq = None
