@@ -5,14 +5,20 @@
 A simulation model designed to generate a curve of the primary oscillation frequency
 of Solaris MkII, Monash High Powered Rocketry's flagship hybrid engine. The resulting
 curve is tested against the predicted analytical primary oscillations of the same engine.
+An acoustic liner simulation is run using the average primary oscillations frequency to 
+spec a liner that will optimally damp the target frequency predicted by the interpolated method.
 
 ## Functions, Inputs and Outputs
 This simulator uses defined inputs of the specific engine parameters and data from prior
-Matlab analysis. The curve plot is interpolated using the PCHIP and Akima methods and then 
-validated against the analytical model of the engine oscillations. 
+Matlab analysis.
 Oscillations.py produces the predicted analytical frequencies
 PCHIPInterpolation.py produces the PCHIP curve of the experimental data.
 AkimaInterpolation.py produces the Akima curve of the experimental data.
+Liner_Size.py estimates the dimensions required for an acoustic liner to target the 
+primary frequencies.
+The script outputs plots of each interpolated method vs the analytical prediction based on
+the engine specs. The optimal liner dimensions are also given alongside the average target
+frequency.
 
 ## AI Statement
 Parts of this notebook were generated with the help of AI,
