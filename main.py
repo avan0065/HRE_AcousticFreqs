@@ -119,6 +119,6 @@ if 'liner_size' in sys.modules:
 from liner_size import acoustic_liner
 
 # Calculate optimal liner size
-target_freq, best_diameter_m, best_freq = acoustic_liner(freqs_pchip, freqs_linear, R, T_av)
+target_freq, best_diameter_m, best_freq = acoustic_liner(freqs_pchip, R)
 print(f"The targeted frequency of the engine is {target_freq:.2f} Hz.")
 print(f"The optimal liner hole diameter is {best_diameter_m*1000:.2f} mm with a target frequency of {best_freq:.2f} Hz.")
