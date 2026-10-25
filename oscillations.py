@@ -27,7 +27,7 @@ def primary_oscillation(mdot, OF_ratio, P_c, L, R, T_av, D_min):
     """
     import numpy as np
     import math
-    
+
     freqs = [] # initialise the frequency array
     RT = R * T_av # find RT value from engine parameters
     # loop through each port diameter value
