@@ -8,10 +8,10 @@ from liner_size import acoustic_liner
 
 def test_primary_oscillation_trends():
     # Test inputs
-    mdot = 1.5
-    OF_ratio = 6
+    mdot = 3
+    OF_ratio = 4.5
     P_c = 1500000
-    L = 0.36
+    L = 0.45
     R = 302.3
     T_av = 2700
     D_min = np.array([0.045, 0.05, 0.08])
@@ -42,10 +42,10 @@ def test_interpolations_at_knots():
 
 def test_acoustic_liner_dimensions():
     # Setup dummy arrays for frequencies
-    freqs_pchip = np.array([400.0, 395.0, 390.0])
-    freqs_linear = np.array([402.0, 396.0, 391.0])
+    freqs_pchip = np.array([800.0, 400.0, 395.0, 390.0])
+    freqs_linear = np.array([785.00, 402.0, 396.0, 391.0])
     R = 302.3
-    target_freq, best_diameter_m, best_freq = acoustic_liner(freqs_pchip, freqs_linear, R)
+    target_freq, best_diameter_m, best_freq = acoustic_liner(freqs_pchip, R)
 
     # Verify target frequency is calculated and positive
     assert target_freq > 0, "Target frequency must be positive."
