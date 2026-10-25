@@ -39,8 +39,6 @@ def acoustic_liner(freqs_pchip, freqs_linear, R, T_av):
     best_freq = None
     min_deviation = float('inf')
 
-    print(f"Optimal neck diameter to target: {target_freq:.2f} Hz\n")
-
     for d_mm in neck_diameters_mm:
         d_m = d_mm / 1000.0 # hole diameter in metres
         t_e = t_liner + 0.85 * d_m
@@ -52,4 +50,4 @@ def acoustic_liner(freqs_pchip, freqs_linear, R, T_av):
             best_diameter_m = d_m
             best_freq = f_res
 
-    return best_diameter_m, best_freq
+    return target_freq, best_diameter_m, best_freq
