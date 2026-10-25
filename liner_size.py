@@ -1,5 +1,5 @@
 
-def acoustic_liner(freqs_pchip, freqs_linear, R, T_av):
+def acoustic_liner(freqs_pchip, freqs_linear, R):
     """
     Determines the optimal neck diameter for an acoustic liner cavity to target
     the average frequency calculated from interpolation models.
@@ -12,8 +12,6 @@ def acoustic_liner(freqs_pchip, freqs_linear, R, T_av):
         Interpolated frequency data array using the Linear method [Hz].
     R : float
         Specific gas constant of the chamber mixture [J/(kg*K)].
-    T_av : float
-        Average combustion temperature [K].
 
     Returns
     -------
