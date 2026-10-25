@@ -56,7 +56,7 @@ liner_size    </h1>
 
                         <label class="view-source-button" for="mod-liner_size-view-source"><span>View Source</span></label>
 
-                        <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos"> 1</span></a><span class="k">def</span><span class="w"> </span><span class="nf">acoustic_liner</span><span class="p">(</span><span class="n">freqs_pchip</span><span class="p">,</span> <span class="n">freqs_linear</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">T_av</span><span class="p">):</span>
+                        <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos"> 1</span></a><span class="k">def</span><span class="w"> </span><span class="nf">acoustic_liner</span><span class="p">(</span><span class="n">freqs_pchip</span><span class="p">,</span> <span class="n">R</span><span class="p">):</span>
 </span><span id="L-2"><a href="#L-2"><span class="linenos"> 2</span></a><span class="w">    </span><span class="sd">"""</span>
 </span><span id="L-3"><a href="#L-3"><span class="linenos"> 3</span></a><span class="sd">    Determines the optimal neck diameter for an acoustic liner cavity to target</span>
 </span><span id="L-4"><a href="#L-4"><span class="linenos"> 4</span></a><span class="sd">    the average frequency calculated from interpolation models.</span>
@@ -65,49 +65,45 @@ liner_size    </h1>
 </span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="sd">    ----------</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a><span class="sd">    freqs_pchip : array-like</span>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="sd">        Interpolated frequency data array using the PCHIP method [Hz].</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a><span class="sd">    freqs_linear : array-like</span>
-</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a><span class="sd">        Interpolated frequency data array using the Linear method [Hz].</span>
-</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a><span class="sd">    R : float</span>
-</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a><span class="sd">        Specific gas constant of the chamber mixture [J/(kg*K)].</span>
-</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a><span class="sd">    T_av : float</span>
-</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a><span class="sd">        Average combustion temperature [K].</span>
-</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a>
-</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="sd">    Returns</span>
-</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a><span class="sd">    -------</span>
-</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="sd">    best_diameter_m : float</span>
-</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a><span class="sd">        The optimal hole/neck diameter matching the target frequency [m].</span>
-</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a><span class="sd">    best_freq : float</span>
-</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="sd">        The calculated resonance frequency at the optimal diameter [Hz].</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a><span class="sd">    """</span>
-</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a>    <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>    <span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
-</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a>
-</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a>    <span class="c1"># Design target and parameters</span>
-</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>    <span class="n">target_freq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="n">freqs_pchip</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">freqs_linear</span><span class="o">.</span><span class="n">mean</span><span class="p">()])</span>
-</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a>    <span class="n">c_gas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">1.18</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="mi">800</span><span class="p">)</span>
-</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a>    <span class="n">depth</span> <span class="o">=</span> <span class="mf">0.02</span> <span class="c1"># depth of back cavity (between chamber wall and liner) [m]</span>
-</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a>    <span class="n">t_liner</span> <span class="o">=</span> <span class="mf">0.005</span> <span class="c1"># thickness of liner [m]</span>
-</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a>    <span class="n">p_liner</span> <span class="o">=</span> <span class="mf">0.005</span> <span class="c1"># porosity of the liner</span>
-</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a>
-</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a>    <span class="c1"># Define the search range for hole diameters</span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a>    <span class="n">neck_diameters_mm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a><span class="sd">    R : float</span>
+</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a><span class="sd">        Specific gas constant of the chamber mixture [J/(kg*K)].</span>
+</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>
+</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a><span class="sd">    Returns</span>
+</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a><span class="sd">    -------</span>
+</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a><span class="sd">    best_diameter_m : float</span>
+</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="sd">        The optimal hole/neck diameter matching the target frequency [m].</span>
+</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="sd">    best_freq : float</span>
+</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a><span class="sd">        The calculated resonance frequency at the optimal diameter [Hz].</span>
+</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="sd">    """</span>
+</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a>    <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a>    <span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a>
+</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>    <span class="c1"># Design target and parameters</span>
+</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a>    <span class="n">target_freq</span> <span class="o">=</span> <span class="n">freqs_pchip</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>    <span class="n">c_gas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">1.18</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="mi">800</span><span class="p">)</span>
+</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a>    <span class="n">depth</span> <span class="o">=</span> <span class="mf">0.02</span> <span class="c1"># depth of back cavity (between chamber wall and liner) [m]</span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a>    <span class="n">t_liner</span> <span class="o">=</span> <span class="mf">0.005</span> <span class="c1"># thickness of liner [m]</span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>    <span class="n">p_liner</span> <span class="o">=</span> <span class="mf">0.005</span> <span class="c1"># porosity of the liner</span>
+</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a>
+</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a>    <span class="c1"># Define the search range for hole diameters</span>
+</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a>    <span class="n">neck_diameters_mm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a>
+</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a>    <span class="n">best_diameter_m</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a>    <span class="n">best_freq</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a>    <span class="n">min_deviation</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">'inf'</span><span class="p">)</span>
 </span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a>
-</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a>    <span class="n">best_diameter_m</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a>    <span class="n">best_freq</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a>    <span class="n">min_deviation</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">'inf'</span><span class="p">)</span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a>
-</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a>    <span class="k">for</span> <span class="n">d_mm</span> <span class="ow">in</span> <span class="n">neck_diameters_mm</span><span class="p">:</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a>        <span class="n">d_m</span> <span class="o">=</span> <span class="n">d_mm</span> <span class="o">/</span> <span class="mf">1000.0</span> <span class="c1"># hole diameter in metres</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a>        <span class="n">t_e</span> <span class="o">=</span> <span class="n">t_liner</span> <span class="o">+</span> <span class="mf">0.85</span> <span class="o">*</span> <span class="n">d_m</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a>        <span class="n">f_res</span> <span class="o">=</span> <span class="p">(</span><span class="n">c_gas</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">p_liner</span> <span class="o">/</span> <span class="p">(</span><span class="n">t_e</span> <span class="o">*</span> <span class="n">depth</span><span class="p">))</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a>
-</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a>        <span class="n">deviation</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">f_res</span> <span class="o">-</span> <span class="n">target_freq</span><span class="p">)</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a>        <span class="k">if</span> <span class="n">deviation</span> <span class="o">&lt;</span> <span class="n">min_deviation</span><span class="p">:</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a>            <span class="n">min_deviation</span> <span class="o">=</span> <span class="n">deviation</span>
-</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>            <span class="n">best_diameter_m</span> <span class="o">=</span> <span class="n">d_m</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>            <span class="n">best_freq</span> <span class="o">=</span> <span class="n">f_res</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>
-</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a>    <span class="k">return</span> <span class="n">target_freq</span><span class="p">,</span> <span class="n">best_diameter_m</span><span class="p">,</span> <span class="n">best_freq</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a>    <span class="k">for</span> <span class="n">d_mm</span> <span class="ow">in</span> <span class="n">neck_diameters_mm</span><span class="p">:</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a>        <span class="n">d_m</span> <span class="o">=</span> <span class="n">d_mm</span> <span class="o">/</span> <span class="mf">1000.0</span> <span class="c1"># hole diameter in metres</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a>        <span class="n">t_e</span> <span class="o">=</span> <span class="n">t_liner</span> <span class="o">+</span> <span class="mf">0.85</span> <span class="o">*</span> <span class="n">d_m</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a>        <span class="n">f_res</span> <span class="o">=</span> <span class="p">(</span><span class="n">c_gas</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">p_liner</span> <span class="o">/</span> <span class="p">(</span><span class="n">t_e</span> <span class="o">*</span> <span class="n">depth</span><span class="p">))</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a>
+</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a>        <span class="n">deviation</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">f_res</span> <span class="o">-</span> <span class="n">target_freq</span><span class="p">)</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a>        <span class="k">if</span> <span class="n">deviation</span> <span class="o">&lt;</span> <span class="n">min_deviation</span><span class="p">:</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a>            <span class="n">min_deviation</span> <span class="o">=</span> <span class="n">deviation</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a>            <span class="n">best_diameter_m</span> <span class="o">=</span> <span class="n">d_m</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a>            <span class="n">best_freq</span> <span class="o">=</span> <span class="n">f_res</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a>    <span class="k">return</span> <span class="n">target_freq</span><span class="p">,</span> <span class="n">best_diameter_m</span><span class="p">,</span> <span class="n">best_freq</span>
 </span></pre></div>
 
 
@@ -117,13 +113,13 @@ liner_size    </h1>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">acoustic_liner</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">freqs_pchip</span>, </span><span class="param"><span class="n">freqs_linear</span>, </span><span class="param"><span class="n">R</span>, </span><span class="param"><span class="n">T_av</span></span><span class="return-annotation">):</span></span>
+        <span class="name">acoustic_liner</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">freqs_pchip</span>, </span><span class="param"><span class="n">R</span></span><span class="return-annotation">):</span></span>
 
                 <label class="view-source-button" for="acoustic_liner-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#acoustic_liner"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="acoustic_liner-3"><a href="#acoustic_liner-3"><span class="linenos"> 3</span></a><span class="k">def</span><span class="w"> </span><span class="nf">acoustic_liner</span><span class="p">(</span><span class="n">freqs_pchip</span><span class="p">,</span> <span class="n">freqs_linear</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">T_av</span><span class="p">):</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="acoustic_liner-3"><a href="#acoustic_liner-3"><span class="linenos"> 3</span></a><span class="k">def</span><span class="w"> </span><span class="nf">acoustic_liner</span><span class="p">(</span><span class="n">freqs_pchip</span><span class="p">,</span> <span class="n">R</span><span class="p">):</span>
 </span><span id="acoustic_liner-4"><a href="#acoustic_liner-4"><span class="linenos"> 4</span></a><span class="w">    </span><span class="sd">"""</span>
 </span><span id="acoustic_liner-5"><a href="#acoustic_liner-5"><span class="linenos"> 5</span></a><span class="sd">    Determines the optimal neck diameter for an acoustic liner cavity to target</span>
 </span><span id="acoustic_liner-6"><a href="#acoustic_liner-6"><span class="linenos"> 6</span></a><span class="sd">    the average frequency calculated from interpolation models.</span>
@@ -132,49 +128,45 @@ liner_size    </h1>
 </span><span id="acoustic_liner-9"><a href="#acoustic_liner-9"><span class="linenos"> 9</span></a><span class="sd">    ----------</span>
 </span><span id="acoustic_liner-10"><a href="#acoustic_liner-10"><span class="linenos">10</span></a><span class="sd">    freqs_pchip : array-like</span>
 </span><span id="acoustic_liner-11"><a href="#acoustic_liner-11"><span class="linenos">11</span></a><span class="sd">        Interpolated frequency data array using the PCHIP method [Hz].</span>
-</span><span id="acoustic_liner-12"><a href="#acoustic_liner-12"><span class="linenos">12</span></a><span class="sd">    freqs_linear : array-like</span>
-</span><span id="acoustic_liner-13"><a href="#acoustic_liner-13"><span class="linenos">13</span></a><span class="sd">        Interpolated frequency data array using the Linear method [Hz].</span>
-</span><span id="acoustic_liner-14"><a href="#acoustic_liner-14"><span class="linenos">14</span></a><span class="sd">    R : float</span>
-</span><span id="acoustic_liner-15"><a href="#acoustic_liner-15"><span class="linenos">15</span></a><span class="sd">        Specific gas constant of the chamber mixture [J/(kg*K)].</span>
-</span><span id="acoustic_liner-16"><a href="#acoustic_liner-16"><span class="linenos">16</span></a><span class="sd">    T_av : float</span>
-</span><span id="acoustic_liner-17"><a href="#acoustic_liner-17"><span class="linenos">17</span></a><span class="sd">        Average combustion temperature [K].</span>
-</span><span id="acoustic_liner-18"><a href="#acoustic_liner-18"><span class="linenos">18</span></a>
-</span><span id="acoustic_liner-19"><a href="#acoustic_liner-19"><span class="linenos">19</span></a><span class="sd">    Returns</span>
-</span><span id="acoustic_liner-20"><a href="#acoustic_liner-20"><span class="linenos">20</span></a><span class="sd">    -------</span>
-</span><span id="acoustic_liner-21"><a href="#acoustic_liner-21"><span class="linenos">21</span></a><span class="sd">    best_diameter_m : float</span>
-</span><span id="acoustic_liner-22"><a href="#acoustic_liner-22"><span class="linenos">22</span></a><span class="sd">        The optimal hole/neck diameter matching the target frequency [m].</span>
-</span><span id="acoustic_liner-23"><a href="#acoustic_liner-23"><span class="linenos">23</span></a><span class="sd">    best_freq : float</span>
-</span><span id="acoustic_liner-24"><a href="#acoustic_liner-24"><span class="linenos">24</span></a><span class="sd">        The calculated resonance frequency at the optimal diameter [Hz].</span>
-</span><span id="acoustic_liner-25"><a href="#acoustic_liner-25"><span class="linenos">25</span></a><span class="sd">    """</span>
-</span><span id="acoustic_liner-26"><a href="#acoustic_liner-26"><span class="linenos">26</span></a>    <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-</span><span id="acoustic_liner-27"><a href="#acoustic_liner-27"><span class="linenos">27</span></a>    <span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
-</span><span id="acoustic_liner-28"><a href="#acoustic_liner-28"><span class="linenos">28</span></a>
-</span><span id="acoustic_liner-29"><a href="#acoustic_liner-29"><span class="linenos">29</span></a>    <span class="c1"># Design target and parameters</span>
-</span><span id="acoustic_liner-30"><a href="#acoustic_liner-30"><span class="linenos">30</span></a>    <span class="n">target_freq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="n">freqs_pchip</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">freqs_linear</span><span class="o">.</span><span class="n">mean</span><span class="p">()])</span>
-</span><span id="acoustic_liner-31"><a href="#acoustic_liner-31"><span class="linenos">31</span></a>    <span class="n">c_gas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">1.18</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="mi">800</span><span class="p">)</span>
-</span><span id="acoustic_liner-32"><a href="#acoustic_liner-32"><span class="linenos">32</span></a>    <span class="n">depth</span> <span class="o">=</span> <span class="mf">0.02</span> <span class="c1"># depth of back cavity (between chamber wall and liner) [m]</span>
-</span><span id="acoustic_liner-33"><a href="#acoustic_liner-33"><span class="linenos">33</span></a>    <span class="n">t_liner</span> <span class="o">=</span> <span class="mf">0.005</span> <span class="c1"># thickness of liner [m]</span>
-</span><span id="acoustic_liner-34"><a href="#acoustic_liner-34"><span class="linenos">34</span></a>    <span class="n">p_liner</span> <span class="o">=</span> <span class="mf">0.005</span> <span class="c1"># porosity of the liner</span>
-</span><span id="acoustic_liner-35"><a href="#acoustic_liner-35"><span class="linenos">35</span></a>
-</span><span id="acoustic_liner-36"><a href="#acoustic_liner-36"><span class="linenos">36</span></a>    <span class="c1"># Define the search range for hole diameters</span>
-</span><span id="acoustic_liner-37"><a href="#acoustic_liner-37"><span class="linenos">37</span></a>    <span class="n">neck_diameters_mm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+</span><span id="acoustic_liner-12"><a href="#acoustic_liner-12"><span class="linenos">12</span></a><span class="sd">    R : float</span>
+</span><span id="acoustic_liner-13"><a href="#acoustic_liner-13"><span class="linenos">13</span></a><span class="sd">        Specific gas constant of the chamber mixture [J/(kg*K)].</span>
+</span><span id="acoustic_liner-14"><a href="#acoustic_liner-14"><span class="linenos">14</span></a>
+</span><span id="acoustic_liner-15"><a href="#acoustic_liner-15"><span class="linenos">15</span></a><span class="sd">    Returns</span>
+</span><span id="acoustic_liner-16"><a href="#acoustic_liner-16"><span class="linenos">16</span></a><span class="sd">    -------</span>
+</span><span id="acoustic_liner-17"><a href="#acoustic_liner-17"><span class="linenos">17</span></a><span class="sd">    best_diameter_m : float</span>
+</span><span id="acoustic_liner-18"><a href="#acoustic_liner-18"><span class="linenos">18</span></a><span class="sd">        The optimal hole/neck diameter matching the target frequency [m].</span>
+</span><span id="acoustic_liner-19"><a href="#acoustic_liner-19"><span class="linenos">19</span></a><span class="sd">    best_freq : float</span>
+</span><span id="acoustic_liner-20"><a href="#acoustic_liner-20"><span class="linenos">20</span></a><span class="sd">        The calculated resonance frequency at the optimal diameter [Hz].</span>
+</span><span id="acoustic_liner-21"><a href="#acoustic_liner-21"><span class="linenos">21</span></a><span class="sd">    """</span>
+</span><span id="acoustic_liner-22"><a href="#acoustic_liner-22"><span class="linenos">22</span></a>    <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</span><span id="acoustic_liner-23"><a href="#acoustic_liner-23"><span class="linenos">23</span></a>    <span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+</span><span id="acoustic_liner-24"><a href="#acoustic_liner-24"><span class="linenos">24</span></a>
+</span><span id="acoustic_liner-25"><a href="#acoustic_liner-25"><span class="linenos">25</span></a>    <span class="c1"># Design target and parameters</span>
+</span><span id="acoustic_liner-26"><a href="#acoustic_liner-26"><span class="linenos">26</span></a>    <span class="n">target_freq</span> <span class="o">=</span> <span class="n">freqs_pchip</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</span><span id="acoustic_liner-27"><a href="#acoustic_liner-27"><span class="linenos">27</span></a>    <span class="n">c_gas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">1.18</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="mi">800</span><span class="p">)</span>
+</span><span id="acoustic_liner-28"><a href="#acoustic_liner-28"><span class="linenos">28</span></a>    <span class="n">depth</span> <span class="o">=</span> <span class="mf">0.02</span> <span class="c1"># depth of back cavity (between chamber wall and liner) [m]</span>
+</span><span id="acoustic_liner-29"><a href="#acoustic_liner-29"><span class="linenos">29</span></a>    <span class="n">t_liner</span> <span class="o">=</span> <span class="mf">0.005</span> <span class="c1"># thickness of liner [m]</span>
+</span><span id="acoustic_liner-30"><a href="#acoustic_liner-30"><span class="linenos">30</span></a>    <span class="n">p_liner</span> <span class="o">=</span> <span class="mf">0.005</span> <span class="c1"># porosity of the liner</span>
+</span><span id="acoustic_liner-31"><a href="#acoustic_liner-31"><span class="linenos">31</span></a>
+</span><span id="acoustic_liner-32"><a href="#acoustic_liner-32"><span class="linenos">32</span></a>    <span class="c1"># Define the search range for hole diameters</span>
+</span><span id="acoustic_liner-33"><a href="#acoustic_liner-33"><span class="linenos">33</span></a>    <span class="n">neck_diameters_mm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+</span><span id="acoustic_liner-34"><a href="#acoustic_liner-34"><span class="linenos">34</span></a>
+</span><span id="acoustic_liner-35"><a href="#acoustic_liner-35"><span class="linenos">35</span></a>    <span class="n">best_diameter_m</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="acoustic_liner-36"><a href="#acoustic_liner-36"><span class="linenos">36</span></a>    <span class="n">best_freq</span> <span class="o">=</span> <span class="kc">None</span>
+</span><span id="acoustic_liner-37"><a href="#acoustic_liner-37"><span class="linenos">37</span></a>    <span class="n">min_deviation</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">'inf'</span><span class="p">)</span>
 </span><span id="acoustic_liner-38"><a href="#acoustic_liner-38"><span class="linenos">38</span></a>
-</span><span id="acoustic_liner-39"><a href="#acoustic_liner-39"><span class="linenos">39</span></a>    <span class="n">best_diameter_m</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="acoustic_liner-40"><a href="#acoustic_liner-40"><span class="linenos">40</span></a>    <span class="n">best_freq</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="acoustic_liner-41"><a href="#acoustic_liner-41"><span class="linenos">41</span></a>    <span class="n">min_deviation</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">'inf'</span><span class="p">)</span>
-</span><span id="acoustic_liner-42"><a href="#acoustic_liner-42"><span class="linenos">42</span></a>
-</span><span id="acoustic_liner-43"><a href="#acoustic_liner-43"><span class="linenos">43</span></a>    <span class="k">for</span> <span class="n">d_mm</span> <span class="ow">in</span> <span class="n">neck_diameters_mm</span><span class="p">:</span>
-</span><span id="acoustic_liner-44"><a href="#acoustic_liner-44"><span class="linenos">44</span></a>        <span class="n">d_m</span> <span class="o">=</span> <span class="n">d_mm</span> <span class="o">/</span> <span class="mf">1000.0</span> <span class="c1"># hole diameter in metres</span>
-</span><span id="acoustic_liner-45"><a href="#acoustic_liner-45"><span class="linenos">45</span></a>        <span class="n">t_e</span> <span class="o">=</span> <span class="n">t_liner</span> <span class="o">+</span> <span class="mf">0.85</span> <span class="o">*</span> <span class="n">d_m</span>
-</span><span id="acoustic_liner-46"><a href="#acoustic_liner-46"><span class="linenos">46</span></a>        <span class="n">f_res</span> <span class="o">=</span> <span class="p">(</span><span class="n">c_gas</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">p_liner</span> <span class="o">/</span> <span class="p">(</span><span class="n">t_e</span> <span class="o">*</span> <span class="n">depth</span><span class="p">))</span>
-</span><span id="acoustic_liner-47"><a href="#acoustic_liner-47"><span class="linenos">47</span></a>
-</span><span id="acoustic_liner-48"><a href="#acoustic_liner-48"><span class="linenos">48</span></a>        <span class="n">deviation</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">f_res</span> <span class="o">-</span> <span class="n">target_freq</span><span class="p">)</span>
-</span><span id="acoustic_liner-49"><a href="#acoustic_liner-49"><span class="linenos">49</span></a>        <span class="k">if</span> <span class="n">deviation</span> <span class="o">&lt;</span> <span class="n">min_deviation</span><span class="p">:</span>
-</span><span id="acoustic_liner-50"><a href="#acoustic_liner-50"><span class="linenos">50</span></a>            <span class="n">min_deviation</span> <span class="o">=</span> <span class="n">deviation</span>
-</span><span id="acoustic_liner-51"><a href="#acoustic_liner-51"><span class="linenos">51</span></a>            <span class="n">best_diameter_m</span> <span class="o">=</span> <span class="n">d_m</span>
-</span><span id="acoustic_liner-52"><a href="#acoustic_liner-52"><span class="linenos">52</span></a>            <span class="n">best_freq</span> <span class="o">=</span> <span class="n">f_res</span>
-</span><span id="acoustic_liner-53"><a href="#acoustic_liner-53"><span class="linenos">53</span></a>
-</span><span id="acoustic_liner-54"><a href="#acoustic_liner-54"><span class="linenos">54</span></a>    <span class="k">return</span> <span class="n">target_freq</span><span class="p">,</span> <span class="n">best_diameter_m</span><span class="p">,</span> <span class="n">best_freq</span>
+</span><span id="acoustic_liner-39"><a href="#acoustic_liner-39"><span class="linenos">39</span></a>    <span class="k">for</span> <span class="n">d_mm</span> <span class="ow">in</span> <span class="n">neck_diameters_mm</span><span class="p">:</span>
+</span><span id="acoustic_liner-40"><a href="#acoustic_liner-40"><span class="linenos">40</span></a>        <span class="n">d_m</span> <span class="o">=</span> <span class="n">d_mm</span> <span class="o">/</span> <span class="mf">1000.0</span> <span class="c1"># hole diameter in metres</span>
+</span><span id="acoustic_liner-41"><a href="#acoustic_liner-41"><span class="linenos">41</span></a>        <span class="n">t_e</span> <span class="o">=</span> <span class="n">t_liner</span> <span class="o">+</span> <span class="mf">0.85</span> <span class="o">*</span> <span class="n">d_m</span>
+</span><span id="acoustic_liner-42"><a href="#acoustic_liner-42"><span class="linenos">42</span></a>        <span class="n">f_res</span> <span class="o">=</span> <span class="p">(</span><span class="n">c_gas</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">p_liner</span> <span class="o">/</span> <span class="p">(</span><span class="n">t_e</span> <span class="o">*</span> <span class="n">depth</span><span class="p">))</span>
+</span><span id="acoustic_liner-43"><a href="#acoustic_liner-43"><span class="linenos">43</span></a>
+</span><span id="acoustic_liner-44"><a href="#acoustic_liner-44"><span class="linenos">44</span></a>        <span class="n">deviation</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">f_res</span> <span class="o">-</span> <span class="n">target_freq</span><span class="p">)</span>
+</span><span id="acoustic_liner-45"><a href="#acoustic_liner-45"><span class="linenos">45</span></a>        <span class="k">if</span> <span class="n">deviation</span> <span class="o">&lt;</span> <span class="n">min_deviation</span><span class="p">:</span>
+</span><span id="acoustic_liner-46"><a href="#acoustic_liner-46"><span class="linenos">46</span></a>            <span class="n">min_deviation</span> <span class="o">=</span> <span class="n">deviation</span>
+</span><span id="acoustic_liner-47"><a href="#acoustic_liner-47"><span class="linenos">47</span></a>            <span class="n">best_diameter_m</span> <span class="o">=</span> <span class="n">d_m</span>
+</span><span id="acoustic_liner-48"><a href="#acoustic_liner-48"><span class="linenos">48</span></a>            <span class="n">best_freq</span> <span class="o">=</span> <span class="n">f_res</span>
+</span><span id="acoustic_liner-49"><a href="#acoustic_liner-49"><span class="linenos">49</span></a>
+</span><span id="acoustic_liner-50"><a href="#acoustic_liner-50"><span class="linenos">50</span></a>    <span class="k">return</span> <span class="n">target_freq</span><span class="p">,</span> <span class="n">best_diameter_m</span><span class="p">,</span> <span class="n">best_freq</span>
 </span></pre></div>
 
 
@@ -185,12 +177,8 @@ the average frequency calculated from interpolation models.</p>
 
 <p>freqs_pchip : array-like
     Interpolated frequency data array using the PCHIP method [Hz].
-freqs_linear : array-like
-    Interpolated frequency data array using the Linear method [Hz].
 R : float
-    Specific gas constant of the chamber mixture [J/(kg*K)].
-T_av : float
-    Average combustion temperature [K].</p>
+    Specific gas constant of the chamber mixture [J/(kg*K)].</p>
 
 <h2 id="returns">Returns</h2>
 

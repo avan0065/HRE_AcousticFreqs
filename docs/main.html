@@ -285,7 +285,7 @@ main    </h1>
 </span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">liner_size</span><span class="w"> </span><span class="kn">import</span> <span class="n">acoustic_liner</span>
 </span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>
 </span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="c1"># Calculate optimal liner size</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="n">target_freq</span><span class="p">,</span> <span class="n">best_diameter_m</span><span class="p">,</span> <span class="n">best_freq</span> <span class="o">=</span> <span class="n">acoustic_liner</span><span class="p">(</span><span class="n">freqs_pchip</span><span class="p">,</span> <span class="n">freqs_linear</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">T_av</span><span class="p">)</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="n">target_freq</span><span class="p">,</span> <span class="n">best_diameter_m</span><span class="p">,</span> <span class="n">best_freq</span> <span class="o">=</span> <span class="n">acoustic_liner</span><span class="p">(</span><span class="n">freqs_pchip</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span>
 </span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"The targeted frequency of the engine is </span><span class="si">{</span><span class="n">target_freq</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> Hz."</span><span class="p">)</span>
 </span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"The optimal liner hole diameter is </span><span class="si">{</span><span class="n">best_diameter_m</span><span class="o">*</span><span class="mi">1000</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> mm with a target frequency of </span><span class="si">{</span><span class="n">best_freq</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> Hz."</span><span class="p">)</span>
 </span></pre></div>
@@ -490,7 +490,7 @@ main    </h1>
                 <section id="t0_linear">
                     <div class="attr variable">
             <span class="name">t0_linear</span>        =
-<span class="default_value">4035.107873516</span>
+<span class="default_value">14036.749627807</span>
 
         
     </div>
@@ -601,7 +601,7 @@ main    </h1>
                 <section id="t1_linear">
                     <div class="attr variable">
             <span class="name">t1_linear</span>        =
-<span class="default_value">4035.442371936</span>
+<span class="default_value">14037.232902237</span>
 
         
     </div>
@@ -613,7 +613,7 @@ main    </h1>
                 <section id="time_linear">
                     <div class="attr variable">
             <span class="name">time_linear</span>        =
-<span class="default_value">0.33449842000027274</span>
+<span class="default_value">0.483274430000165</span>
 
         
     </div>
@@ -625,7 +625,7 @@ main    </h1>
                 <section id="t0_pchip">
                     <div class="attr variable">
             <span class="name">t0_pchip</span>        =
-<span class="default_value">4035.442373476</span>
+<span class="default_value">14037.232903963</span>
 
         
     </div>
@@ -736,7 +736,7 @@ main    </h1>
                 <section id="t1_pchip">
                     <div class="attr variable">
             <span class="name">t1_pchip</span>        =
-<span class="default_value">4035.442937807</span>
+<span class="default_value">14037.233639734</span>
 
         
     </div>
@@ -748,7 +748,7 @@ main    </h1>
                 <section id="time_pchip">
                     <div class="attr variable">
             <span class="name">time_pchip</span>        =
-<span class="default_value">0.0005643310000778001</span>
+<span class="default_value">0.000735771000108798</span>
 
         
     </div>
@@ -760,7 +760,7 @@ main    </h1>
                 <section id="t0_akima">
                     <div class="attr variable">
             <span class="name">t0_akima</span>        =
-<span class="default_value">4035.442939158</span>
+<span class="default_value">14037.233641626</span>
 
         
     </div>
@@ -871,7 +871,7 @@ main    </h1>
                 <section id="t1_akima">
                     <div class="attr variable">
             <span class="name">t1_akima</span>        =
-<span class="default_value">4035.443326548</span>
+<span class="default_value">14037.234055585</span>
 
         
     </div>
@@ -883,7 +883,7 @@ main    </h1>
                 <section id="time_akima">
                     <div class="attr variable">
             <span class="name">time_akima</span>        =
-<span class="default_value">0.00038739000001442037</span>
+<span class="default_value">0.00041395900007046293</span>
 
         
     </div>
@@ -1016,7 +1016,7 @@ main    </h1>
                     <div class="attr variable">
             <span class="name">metrics_data</span>        =
 <input id="metrics_data-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="metrics_data-view-value"></label><span class="default_value">{&#39;Interpolation Method&#39;: [&#39;Linear&#39;, &#39;PCHIP&#39;, &#39;Akima&#39;], &#39;MAE (Hz)&#39;: [np.float64(45.273624098756294), np.float64(52.832882872036365), np.float64(79.05556369243595)], &#39;RMSE (Hz)&#39;: [np.float64(60.05156282332713), np.float64(66.21074021262388), np.float64(89.6533564311024)], &#39;Execution Time (ms)&#39;: [334.49842000027274, 0.5643310000778001, 0.38739000001442037]}</span>
+            <label class="view-value-button pdoc-button" for="metrics_data-view-value"></label><span class="default_value">{&#39;Interpolation Method&#39;: [&#39;Linear&#39;, &#39;PCHIP&#39;, &#39;Akima&#39;], &#39;MAE (Hz)&#39;: [np.float64(45.273624098756294), np.float64(52.832882872036365), np.float64(79.05556369243595)], &#39;RMSE (Hz)&#39;: [np.float64(60.05156282332713), np.float64(66.21074021262388), np.float64(89.6533564311024)], &#39;Execution Time (ms)&#39;: [483.274430000165, 0.735771000108798, 0.41395900007046293]}</span>
 
         
     </div>
@@ -1030,9 +1030,9 @@ main    </h1>
             <span class="name">metrics_df</span>        =
 <input id="metrics_df-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
             <label class="view-value-button pdoc-button" for="metrics_df-view-value"></label><span class="default_value">  Interpolation Method   MAE (Hz)  RMSE (Hz)  Execution Time (ms)
-0               Linear  45.273624  60.051563           334.498420
-1                PCHIP  52.832883  66.210740             0.564331
-2                Akima  79.055564  89.653356             0.387390</span>
+0               Linear  45.273624  60.051563           483.274430
+1                PCHIP  52.832883  66.210740             0.735771
+2                Akima  79.055564  89.653356             0.413959</span>
 
         
     </div>
