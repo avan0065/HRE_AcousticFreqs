@@ -12,13 +12,13 @@ spec a liner that will optimally damp the target frequency predicted by the inte
 This simulator uses defined inputs of the specific engine parameters and data from prior
 Matlab analysis.
 
-Oscillations.py produces the predicted analytical frequencies
+Oscillations.py produces the predicted analytical frequencies.
 
 PCHIPInterpolation.py produces the PCHIP curve of the experimental data.
 
 AkimaInterpolation.py produces the Akima curve of the experimental data.
 
-Liner_Size.py estimates the dimensions required for an acoustic liner to target the 
+Liner_Size.py estimates the dimensions required for a perforated acoustic liner to target the 
 primary frequencies.
 
 The script outputs plots of each interpolated method vs the analytical prediction based on
