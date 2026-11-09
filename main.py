@@ -116,11 +116,11 @@ plt.legend()
 plt.show()
 
 # Evaluate interpolations at analytical diameter values
-y_pchip = pchip_model(D_min)
+y_pchip = _pchip_model(D_min)
 """array: PCHIP interpolation values at analytical diameter values"""
-y_akima = akima_model(D_min)
+y_akima = _akima_model(D_min)
 """array: Akima interpolation values at analytical diameter values"""
-y_linear = linear_model(D_min)
+y_linear = _linear_model(D_min)
 """array: Linear interpolation values at analytical diameter values"""
 
 # Calculate RMSE
