@@ -30,12 +30,12 @@ from linearinterpolation import plot_linear_interpolation
 
 # Exclude some variables from pdoc
 __pdoc__ = {
-    "time_pchip": False,
-    "time_akima": False,
-    "time_linear": False,
-    "linear_model": False,
-    "pchip_model": False,
-    "akima_model": False,
+    "time_pchip": None,
+    "time_akima": None,
+    "time_linear": None,
+    "linear_model": None,
+    "pchip_model": None,
+    "akima_model": None,
 }
 
 # Engine parameters
