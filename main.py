@@ -28,16 +28,6 @@ from pchipinterpolation import plot_pchip_interpolation
 from akimainterpolation import plot_akima_interpolation
 from linearinterpolation import plot_linear_interpolation
 
-# Exclude some variables from pdoc
-__pdoc__ = {
-    "time_pchip": None,
-    "time_akima": None,
-    "time_linear": None,
-    "linear_model": None,
-    "pchip_model": None,
-    "akima_model": None,
-}
-
 # Engine parameters
 mdot = 1.5 
 """float: oxidser mass flow [kg/s]"""
@@ -72,8 +62,8 @@ D_fine = np.linspace(D_fuelgrain.min(), D_fuelgrain.max(), 300)
 
 # Timing Regime for Linear
 _t0_linear = time.perf_counter()
-linear_model = plot_linear_interpolation(D_fuelgrain, solaris_freqs)
-freqs_linear = linear_model(D_fine)
+_linear_model = plot_linear_interpolation(D_fuelgrain, solaris_freqs)
+freqs_linear = _linear_model(D_fine)
 """array: frequencies determined from linearinterpolation.py using D_min [Hz]"""
 _t1_linear = time.perf_counter()
 time_linear = _t1_linear - _t0_linear
@@ -81,8 +71,8 @@ time_linear = _t1_linear - _t0_linear
 
 # Timing Regime for PCHIP
 _t0_pchip = time.perf_counter()
-pchip_model = plot_pchip_interpolation(D_fuelgrain, solaris_freqs)
-freqs_pchip = pchip_model(D_fine)
+_pchip_model = plot_pchip_interpolation(D_fuelgrain, solaris_freqs)
+freqs_pchip = _pchip_model(D_fine)
 """array: frequencies determined from PCHIPinterpolation.py using D_min [Hz]"""
 _t1_pchip = time.perf_counter()
 time_pchip = _t1_pchip - _t0_pchip
@@ -90,8 +80,8 @@ time_pchip = _t1_pchip - _t0_pchip
 
 # Timing Regime for Akima
 _t0_akima = time.perf_counter()
-akima_model = plot_akima_interpolation(D_fuelgrain, solaris_freqs)
-freqs_akima = akima_model(D_fine)
+_akima_model = plot_akima_interpolation(D_fuelgrain, solaris_freqs)
+freqs_akima = _akima_model(D_fine)
 """array: frequencies determined from akimainterpolation.py using D_min [Hz]"""
 _t1_akima = time.perf_counter()
 time_akima = _t1_akima - _t0_akima
@@ -157,9 +147,9 @@ metrics_data = {
     'Execution Time (ms)': [time_linear * 1000, time_pchip * 1000, time_akima * 1000]
 }
 """table: comparison of each interpolation method (RMSE, MAE, and timing)"""
-metrics_df = pd.DataFrame(metrics_data)
+_metrics_df = pd.DataFrame(metrics_data)
 print("\n--- Performance Evaluation Metrics ---")
-print(metrics_df.to_string(index=False))
+print(_metrics_df.to_string(index=False))
 
 if 'liner_size' in sys.modules:
     importlib.reload(sys.modules['liner_size'])
