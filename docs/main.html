@@ -30,6 +30,43 @@
 
 
 
+            <h2>API Documentation</h2>
+                <ul class="memberlist">
+            <li>
+                    <a class="variable" href="#mdot">mdot</a>
+            </li>
+            <li>
+                    <a class="variable" href="#OF_ratio">OF_ratio</a>
+            </li>
+            <li>
+                    <a class="variable" href="#P_c">P_c</a>
+            </li>
+            <li>
+                    <a class="variable" href="#L">L</a>
+            </li>
+            <li>
+                    <a class="variable" href="#R">R</a>
+            </li>
+            <li>
+                    <a class="variable" href="#T_av">T_av</a>
+            </li>
+            <li>
+                    <a class="variable" href="#D_fuelgrain">D_fuelgrain</a>
+            </li>
+            <li>
+                    <a class="variable" href="#solaris_freqs">solaris_freqs</a>
+            </li>
+            <li>
+                    <a class="variable" href="#D_min">D_min</a>
+            </li>
+            <li>
+                    <a class="variable" href="#freqs">freqs</a>
+            </li>
+            <li>
+                    <a class="variable" href="#D_fine">D_fine</a>
+            </li>
+    </ul>
+
 
 
         <a class="attribution" title="pdoc: Python API documentation generator" href="https://pdoc.dev" target="_blank">
@@ -87,120 +124,348 @@ acoustic liner to mitigate target frequencies.</p>
 </span><span id="L-28"><a href="#L-28"><span class="linenos"> 28</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">akimainterpolation</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_akima_interpolation</span>
 </span><span id="L-29"><a href="#L-29"><span class="linenos"> 29</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">linearinterpolation</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_linear_interpolation</span>
 </span><span id="L-30"><a href="#L-30"><span class="linenos"> 30</span></a>
-</span><span id="L-31"><a href="#L-31"><span class="linenos"> 31</span></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
-</span><span id="L-32"><a href="#L-32"><span class="linenos"> 32</span></a><span class="w">  </span><span class="sd">"""</span>
-</span><span id="L-33"><a href="#L-33"><span class="linenos"> 33</span></a><span class="sd">  Main execution entry point. Loads configurations, evaluates algorithms,</span>
-</span><span id="L-34"><a href="#L-34"><span class="linenos"> 34</span></a><span class="sd">  plots frequency comparisons, and prints structured evaluation tables.</span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a><span class="sd">  """</span>
-</span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a>  
-</span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a>  <span class="c1"># Engine parameters</span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a>  <span class="n">mdot</span> <span class="o">=</span> <span class="mf">1.5</span> <span class="c1"># oxidiser mass flow [kg/s]</span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a>  <span class="n">OF_ratio</span> <span class="o">=</span> <span class="mi">6</span> <span class="c1"># oxidiser/fuel ratio</span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a>  <span class="n">P_c</span> <span class="o">=</span> <span class="mi">1500000</span> <span class="c1"># chamber pressure [Pa]</span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a>  <span class="n">L</span> <span class="o">=</span> <span class="mf">0.36</span> <span class="c1"># length of chamber [metres]</span>
-</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a>  <span class="n">R</span> <span class="o">=</span> <span class="mf">302.3</span> <span class="c1"># gas constant [J/(kg*K)]</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a>  <span class="n">T_av</span> <span class="o">=</span> <span class="mi">2700</span> <span class="c1"># temperature [Kelvin]</span>
+</span><span id="L-31"><a href="#L-31"><span class="linenos"> 31</span></a><span class="c1"># Engine parameters</span>
+</span><span id="L-32"><a href="#L-32"><span class="linenos"> 32</span></a><span class="n">mdot</span> <span class="o">=</span> <span class="mf">1.5</span> 
+</span><span id="L-33"><a href="#L-33"><span class="linenos"> 33</span></a><span class="sd">"""float: oxidser mass flow [kg/s]"""</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos"> 34</span></a><span class="n">OF_ratio</span> <span class="o">=</span> <span class="mi">6</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a><span class="sd">"""float: oxidiser/fuel ratio"""</span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a><span class="n">P_c</span> <span class="o">=</span> <span class="mi">1500000</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a><span class="sd">"""float: chamber pressure [Pa]"""</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a><span class="n">L</span> <span class="o">=</span> <span class="mf">0.36</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a><span class="sd">"""float: length of chamber [metres]"""</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a><span class="n">R</span> <span class="o">=</span> <span class="mf">302.3</span>
+</span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a><span class="sd">"""float: gas constant [J/(kg*K)]"""</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a><span class="n">T_av</span> <span class="o">=</span> <span class="mi">2700</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a><span class="sd">"""float: temperature [Kelvin]"""</span>
 </span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a>
-</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a>  <span class="c1"># Measured fuel grain diameter data and frequency data from Matlab</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a>  <span class="n">D_fuelgrain</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.045</span><span class="p">,</span> <span class="mf">0.07577</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.078</span><span class="p">,</span> <span class="mf">0.048</span><span class="p">,</span> <span class="mf">0.083</span><span class="p">])</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a>  <span class="n">solaris_freqs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">884.77</span><span class="p">,</span> <span class="mf">208.01</span><span class="p">,</span> <span class="mf">612.97</span><span class="p">,</span> <span class="mf">216.80</span><span class="p">,</span> <span class="mf">732.42</span><span class="p">,</span> <span class="mf">222.66</span><span class="p">])</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a>
-</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a>  <span class="c1"># Define the range of diameters to calculate</span>
-</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a>  <span class="n">D_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.045</span><span class="p">,</span> <span class="mf">0.080</span><span class="p">,</span> <span class="mf">0.0025</span><span class="p">)</span>
-</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a>
-</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a>  <span class="c1"># Call analytical frequency function</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a>  <span class="n">freqs</span> <span class="o">=</span> <span class="n">primary_oscillation</span><span class="p">(</span><span class="n">mdot</span><span class="p">,</span> <span class="n">OF_ratio</span><span class="p">,</span> <span class="n">P_c</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">T_av</span><span class="p">,</span> <span class="n">D_min</span><span class="p">)</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a><span class="c1"># Measured fuel grain diameter data and frequency data from Matlab</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="n">D_fuelgrain</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.045</span><span class="p">,</span> <span class="mf">0.07577</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.078</span><span class="p">,</span> <span class="mf">0.048</span><span class="p">,</span> <span class="mf">0.083</span><span class="p">])</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="sd">"""array: fuel grain inner diameter [m]"""</span>
+</span><span id="L-48"><a href="#L-48"><span class="linenos"> 48</span></a><span class="n">solaris_freqs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">884.77</span><span class="p">,</span> <span class="mf">208.01</span><span class="p">,</span> <span class="mf">612.97</span><span class="p">,</span> <span class="mf">216.80</span><span class="p">,</span> <span class="mf">732.42</span><span class="p">,</span> <span class="mf">222.66</span><span class="p">])</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos"> 49</span></a><span class="sd">"""array: frequencies determined from hotfire data [Hz]"""</span>
+</span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a>
+</span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a><span class="c1"># Define the range of diameters to calculate</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a><span class="n">D_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.045</span><span class="p">,</span> <span class="mf">0.080</span><span class="p">,</span> <span class="mf">0.0025</span><span class="p">)</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a><span class="sd">"""array: desired analysed diameters [m]"""</span>
 </span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a>
-</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a>  <span class="c1"># Generate a fine range of diameter values for a smooth curve</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a>  <span class="n">D_fine</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">D_fuelgrain</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">D_fuelgrain</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">300</span><span class="p">)</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a>
-</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a>  <span class="c1"># Timing Regime for Linear</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a>  <span class="n">t0_linear</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
-</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a>  <span class="n">linear_model</span> <span class="o">=</span> <span class="n">plot_linear_interpolation</span><span class="p">(</span><span class="n">D_fuelgrain</span><span class="p">,</span> <span class="n">solaris_freqs</span><span class="p">)</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a>  <span class="n">freqs_linear</span> <span class="o">=</span> <span class="n">linear_model</span><span class="p">(</span><span class="n">D_fine</span><span class="p">)</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>  <span class="n">t1_linear</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>  <span class="n">time_linear</span> <span class="o">=</span> <span class="n">t1_linear</span> <span class="o">-</span> <span class="n">t0_linear</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>  <span class="c1"># Timing Regime for PCHIP</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>  <span class="n">t0_pchip</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>  <span class="n">pchip_model</span> <span class="o">=</span> <span class="n">plot_pchip_interpolation</span><span class="p">(</span><span class="n">D_fuelgrain</span><span class="p">,</span> <span class="n">solaris_freqs</span><span class="p">)</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>  <span class="n">freqs_pchip</span> <span class="o">=</span> <span class="n">pchip_model</span><span class="p">(</span><span class="n">D_fine</span><span class="p">)</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>  <span class="n">t1_pchip</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>  <span class="n">time_pchip</span> <span class="o">=</span> <span class="n">t1_pchip</span> <span class="o">-</span> <span class="n">t0_pchip</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>  <span class="c1"># Timing Regime for Akima</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>  <span class="n">t0_akima</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>  <span class="n">akima_model</span> <span class="o">=</span> <span class="n">plot_akima_interpolation</span><span class="p">(</span><span class="n">D_fuelgrain</span><span class="p">,</span> <span class="n">solaris_freqs</span><span class="p">)</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>  <span class="n">freqs_akima</span> <span class="o">=</span> <span class="n">akima_model</span><span class="p">(</span><span class="n">D_fine</span><span class="p">)</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>  <span class="n">t1_akima</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>  <span class="n">time_akima</span> <span class="o">=</span> <span class="n">t1_akima</span> <span class="o">-</span> <span class="n">t0_akima</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>  <span class="c1"># Figure 1: Overlaid Plot (just experimental data)</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">D_fuelgrain</span><span class="p">,</span> <span class="n">solaris_freqs</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'black'</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Experimental Points'</span><span class="p">)</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">D_fine</span><span class="p">,</span> <span class="n">freqs_pchip</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'green'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'PCHIP Interpolation'</span><span class="p">)</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">D_fine</span><span class="p">,</span> <span class="n">freqs_akima</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'red'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Akima Interpolation'</span><span class="p">)</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">D_fine</span><span class="p">,</span> <span class="n">freqs_linear</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'orange'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Linear Interpolation'</span><span class="p">)</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Comparison of Analytical Frequencies, PCHIP, and Akima Experimental Trends'</span><span class="p">)</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Fuel Grain Port Diameter (d) [m]'</span><span class="p">)</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Frequency (f) [Hz]'</span><span class="p">)</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s2">"both"</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>  <span class="c1"># Figure 2: Overlaid Plot (with analytical frequencies)</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">D_min</span><span class="p">,</span> <span class="n">freqs</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'black'</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">'s'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Analytical Frequencies'</span><span class="p">)</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">D_min</span><span class="p">,</span> <span class="n">freqs</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'blue'</span><span class="p">)</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">D_fuelgrain</span><span class="p">,</span> <span class="n">solaris_freqs</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'black'</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Experimental Points'</span><span class="p">)</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">D_fine</span><span class="p">,</span> <span class="n">freqs_pchip</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'green'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'PCHIP Interpolation'</span><span class="p">)</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">D_fine</span><span class="p">,</span> <span class="n">freqs_akima</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'red'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Akima Interpolation'</span><span class="p">)</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">D_fine</span><span class="p">,</span> <span class="n">freqs_linear</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'orange'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Linear Interpolation'</span><span class="p">)</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Comparison of Analytical Frequencies and Interpolated Experimental Trends'</span><span class="p">)</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Fuel Grain Port Diameter (d) [m]'</span><span class="p">)</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Frequency (f) [Hz]'</span><span class="p">)</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s2">"both"</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>  <span class="c1"># Evaluate interpolations at analytical diameter values</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>  <span class="n">y_pchip</span> <span class="o">=</span> <span class="n">pchip_model</span><span class="p">(</span><span class="n">D_min</span><span class="p">)</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>  <span class="n">y_akima</span> <span class="o">=</span> <span class="n">akima_model</span><span class="p">(</span><span class="n">D_min</span><span class="p">)</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>  <span class="n">y_linear</span> <span class="o">=</span> <span class="n">linear_model</span><span class="p">(</span><span class="n">D_min</span><span class="p">)</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>  <span class="c1"># Calculate RMSE</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>  <span class="n">rmse_pchip</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">freqs</span> <span class="o">-</span> <span class="n">y_pchip</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>  <span class="n">rmse_akima</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">freqs</span> <span class="o">-</span> <span class="n">y_akima</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>  <span class="n">rmse_linear</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">freqs</span> <span class="o">-</span> <span class="n">y_linear</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>  <span class="c1"># Calculate MAE</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>  <span class="n">mae_pchip</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">freqs</span> <span class="o">-</span> <span class="n">y_pchip</span><span class="p">))</span>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>  <span class="n">mae_akima</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">freqs</span> <span class="o">-</span> <span class="n">y_akima</span><span class="p">))</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>  <span class="n">mae_linear</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">freqs</span> <span class="o">-</span> <span class="n">y_linear</span><span class="p">))</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>  <span class="c1"># Create comparison table</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>  <span class="n">metrics_data</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>      <span class="s1">'Interpolation Method'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'Linear'</span><span class="p">,</span> <span class="s1">'PCHIP'</span><span class="p">,</span> <span class="s1">'Akima'</span><span class="p">],</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>      <span class="s1">'MAE (Hz)'</span><span class="p">:</span> <span class="p">[</span><span class="n">mae_linear</span><span class="p">,</span> <span class="n">mae_pchip</span><span class="p">,</span> <span class="n">mae_akima</span><span class="p">],</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>      <span class="s1">'RMSE (Hz)'</span><span class="p">:</span> <span class="p">[</span><span class="n">rmse_linear</span><span class="p">,</span> <span class="n">rmse_pchip</span><span class="p">,</span> <span class="n">rmse_akima</span><span class="p">],</span>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>      <span class="s1">'Execution Time (ms)'</span><span class="p">:</span> <span class="p">[</span><span class="n">time_linear</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">time_pchip</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">time_akima</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">]</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>  <span class="p">}</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>  <span class="n">metrics_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">metrics_data</span><span class="p">)</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>  <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">--- Performance Evaluation Metrics ---"</span><span class="p">)</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>  <span class="nb">print</span><span class="p">(</span><span class="n">metrics_df</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a><span class="c1"># Call analytical frequency function</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a><span class="n">freqs</span> <span class="o">=</span> <span class="n">primary_oscillation</span><span class="p">(</span><span class="n">mdot</span><span class="p">,</span> <span class="n">OF_ratio</span><span class="p">,</span> <span class="n">P_c</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">T_av</span><span class="p">,</span> <span class="n">D_min</span><span class="p">)</span>
+</span><span id="L-57"><a href="#L-57"><span class="linenos"> 57</span></a><span class="sd">"""array: frequencies determined from oscillation.py using D_min [Hz]"""</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos"> 58</span></a>
+</span><span id="L-59"><a href="#L-59"><span class="linenos"> 59</span></a><span class="c1"># Generate a fine range of diameter values for a smooth curve</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="n">D_fine</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">D_fuelgrain</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">D_fuelgrain</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">300</span><span class="p">)</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">"""array: range of diameters to be interpolated [m]"""</span>
+</span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="w">  </span><span class="sd">"""</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="sd">  Main execution entry point. Evaluates algorithms, plots frequency comparisons, </span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="sd">  and prints structured evaluation tables.</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="sd">  """</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>  <span class="c1"># Timing Regime for Linear</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>  <span class="n">t0_linear</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>  <span class="n">linear_model</span> <span class="o">=</span> <span class="n">plot_linear_interpolation</span><span class="p">(</span><span class="n">D_fuelgrain</span><span class="p">,</span> <span class="n">solaris_freqs</span><span class="p">)</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>  <span class="n">freqs_linear</span> <span class="o">=</span> <span class="n">linear_model</span><span class="p">(</span><span class="n">D_fine</span><span class="p">)</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>  <span class="n">t1_linear</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>  <span class="n">time_linear</span> <span class="o">=</span> <span class="n">t1_linear</span> <span class="o">-</span> <span class="n">t0_linear</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>  <span class="c1"># Timing Regime for PCHIP</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>  <span class="n">t0_pchip</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>  <span class="n">pchip_model</span> <span class="o">=</span> <span class="n">plot_pchip_interpolation</span><span class="p">(</span><span class="n">D_fuelgrain</span><span class="p">,</span> <span class="n">solaris_freqs</span><span class="p">)</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>  <span class="n">freqs_pchip</span> <span class="o">=</span> <span class="n">pchip_model</span><span class="p">(</span><span class="n">D_fine</span><span class="p">)</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>  <span class="n">t1_pchip</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>  <span class="n">time_pchip</span> <span class="o">=</span> <span class="n">t1_pchip</span> <span class="o">-</span> <span class="n">t0_pchip</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>  <span class="c1"># Timing Regime for Akima</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>  <span class="n">t0_akima</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>  <span class="n">akima_model</span> <span class="o">=</span> <span class="n">plot_akima_interpolation</span><span class="p">(</span><span class="n">D_fuelgrain</span><span class="p">,</span> <span class="n">solaris_freqs</span><span class="p">)</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>  <span class="n">freqs_akima</span> <span class="o">=</span> <span class="n">akima_model</span><span class="p">(</span><span class="n">D_fine</span><span class="p">)</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>  <span class="n">t1_akima</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>  <span class="n">time_akima</span> <span class="o">=</span> <span class="n">t1_akima</span> <span class="o">-</span> <span class="n">t0_akima</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>  <span class="c1"># Figure 1: Overlaid Plot (just experimental data)</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">D_fuelgrain</span><span class="p">,</span> <span class="n">solaris_freqs</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'black'</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Experimental Points'</span><span class="p">)</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">D_fine</span><span class="p">,</span> <span class="n">freqs_pchip</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'green'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'PCHIP Interpolation'</span><span class="p">)</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">D_fine</span><span class="p">,</span> <span class="n">freqs_akima</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'red'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Akima Interpolation'</span><span class="p">)</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">D_fine</span><span class="p">,</span> <span class="n">freqs_linear</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'orange'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Linear Interpolation'</span><span class="p">)</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Comparison of Analytical Frequencies, PCHIP, and Akima Experimental Trends'</span><span class="p">)</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Fuel Grain Port Diameter (d) [m]'</span><span class="p">)</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Frequency (f) [Hz]'</span><span class="p">)</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s2">"both"</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>  <span class="c1"># Figure 2: Overlaid Plot (with analytical frequencies)</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">D_min</span><span class="p">,</span> <span class="n">freqs</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'black'</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">'s'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Analytical Frequencies'</span><span class="p">)</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">D_min</span><span class="p">,</span> <span class="n">freqs</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'blue'</span><span class="p">)</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">D_fuelgrain</span><span class="p">,</span> <span class="n">solaris_freqs</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'black'</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Experimental Points'</span><span class="p">)</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">D_fine</span><span class="p">,</span> <span class="n">freqs_pchip</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'green'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'PCHIP Interpolation'</span><span class="p">)</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">D_fine</span><span class="p">,</span> <span class="n">freqs_akima</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'red'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Akima Interpolation'</span><span class="p">)</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">D_fine</span><span class="p">,</span> <span class="n">freqs_linear</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'orange'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Linear Interpolation'</span><span class="p">)</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Comparison of Analytical Frequencies and Interpolated Experimental Trends'</span><span class="p">)</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Fuel Grain Port Diameter (d) [m]'</span><span class="p">)</span>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Frequency (f) [Hz]'</span><span class="p">)</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s2">"both"</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>  <span class="c1"># Evaluate interpolations at analytical diameter values</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>  <span class="n">y_pchip</span> <span class="o">=</span> <span class="n">pchip_model</span><span class="p">(</span><span class="n">D_min</span><span class="p">)</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>  <span class="n">y_akima</span> <span class="o">=</span> <span class="n">akima_model</span><span class="p">(</span><span class="n">D_min</span><span class="p">)</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a>  <span class="n">y_linear</span> <span class="o">=</span> <span class="n">linear_model</span><span class="p">(</span><span class="n">D_min</span><span class="p">)</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a>  <span class="c1"># Calculate RMSE</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>  <span class="n">rmse_pchip</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">freqs</span> <span class="o">-</span> <span class="n">y_pchip</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>  <span class="n">rmse_akima</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">freqs</span> <span class="o">-</span> <span class="n">y_akima</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>  <span class="n">rmse_linear</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">freqs</span> <span class="o">-</span> <span class="n">y_linear</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>  <span class="c1"># Calculate MAE</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a>  <span class="n">mae_pchip</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">freqs</span> <span class="o">-</span> <span class="n">y_pchip</span><span class="p">))</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>  <span class="n">mae_akima</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">freqs</span> <span class="o">-</span> <span class="n">y_akima</span><span class="p">))</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a>  <span class="n">mae_linear</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">freqs</span> <span class="o">-</span> <span class="n">y_linear</span><span class="p">))</span>
 </span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>  <span class="k">if</span> <span class="s1">'liner_size'</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>      <span class="n">importlib</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">'liner_size'</span><span class="p">])</span>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>  <span class="kn">from</span><span class="w"> </span><span class="nn">liner_size</span><span class="w"> </span><span class="kn">import</span> <span class="n">acoustic_liner</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>  <span class="c1"># Calculate optimal liner size</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>  <span class="n">target_freq</span><span class="p">,</span> <span class="n">best_diameter_m</span><span class="p">,</span> <span class="n">best_freq</span> <span class="o">=</span> <span class="n">acoustic_liner</span><span class="p">(</span><span class="n">freqs_pchip</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"The targeted frequency of the engine is </span><span class="si">{</span><span class="n">target_freq</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> Hz."</span><span class="p">)</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"The optimal liner hole diameter is </span><span class="si">{</span><span class="n">best_diameter_m</span><span class="o">*</span><span class="mi">1000</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> mm with a target frequency of </span><span class="si">{</span><span class="n">best_freq</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> Hz."</span><span class="p">)</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>  <span class="c1"># Create comparison table</span>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>  <span class="n">metrics_data</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>      <span class="s1">'Interpolation Method'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'Linear'</span><span class="p">,</span> <span class="s1">'PCHIP'</span><span class="p">,</span> <span class="s1">'Akima'</span><span class="p">],</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>      <span class="s1">'MAE (Hz)'</span><span class="p">:</span> <span class="p">[</span><span class="n">mae_linear</span><span class="p">,</span> <span class="n">mae_pchip</span><span class="p">,</span> <span class="n">mae_akima</span><span class="p">],</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>      <span class="s1">'RMSE (Hz)'</span><span class="p">:</span> <span class="p">[</span><span class="n">rmse_linear</span><span class="p">,</span> <span class="n">rmse_pchip</span><span class="p">,</span> <span class="n">rmse_akima</span><span class="p">],</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>      <span class="s1">'Execution Time (ms)'</span><span class="p">:</span> <span class="p">[</span><span class="n">time_linear</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">time_pchip</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">time_akima</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">]</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>  <span class="p">}</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>  <span class="n">metrics_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">metrics_data</span><span class="p">)</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>  <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">--- Performance Evaluation Metrics ---"</span><span class="p">)</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a>  <span class="nb">print</span><span class="p">(</span><span class="n">metrics_df</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>  <span class="k">if</span> <span class="s1">'liner_size'</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>      <span class="n">importlib</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">'liner_size'</span><span class="p">])</span>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>  <span class="kn">from</span><span class="w"> </span><span class="nn">liner_size</span><span class="w"> </span><span class="kn">import</span> <span class="n">acoustic_liner</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>  <span class="c1"># Calculate optimal liner size</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>  <span class="n">target_freq</span><span class="p">,</span> <span class="n">best_diameter_m</span><span class="p">,</span> <span class="n">best_freq</span> <span class="o">=</span> <span class="n">acoustic_liner</span><span class="p">(</span><span class="n">freqs_pchip</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"The targeted frequency of the engine is </span><span class="si">{</span><span class="n">target_freq</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> Hz."</span><span class="p">)</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"The optimal liner hole diameter is </span><span class="si">{</span><span class="n">best_diameter_m</span><span class="o">*</span><span class="mi">1000</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> mm with a target frequency of </span><span class="si">{</span><span class="n">best_freq</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> Hz."</span><span class="p">)</span>
 </span></pre></div>
 
 
             </section>
+                <section id="mdot">
+                    <div class="attr variable">
+            <span class="name">mdot</span>        =
+<span class="default_value">1.5</span>
+
+        
+    </div>
+    <a class="headerlink" href="#mdot"></a>
+    
+            <div class="docstring"><p>float: oxidser mass flow [kg/s]</p>
+</div>
+
+
+                </section>
+                <section id="OF_ratio">
+                    <div class="attr variable">
+            <span class="name">OF_ratio</span>        =
+<span class="default_value">6</span>
+
+        
+    </div>
+    <a class="headerlink" href="#OF_ratio"></a>
+    
+            <div class="docstring"><p>float: oxidiser/fuel ratio</p>
+</div>
+
+
+                </section>
+                <section id="P_c">
+                    <div class="attr variable">
+            <span class="name">P_c</span>        =
+<span class="default_value">1500000</span>
+
+        
+    </div>
+    <a class="headerlink" href="#P_c"></a>
+    
+            <div class="docstring"><p>float: chamber pressure [Pa]</p>
+</div>
+
+
+                </section>
+                <section id="L">
+                    <div class="attr variable">
+            <span class="name">L</span>        =
+<span class="default_value">0.36</span>
+
+        
+    </div>
+    <a class="headerlink" href="#L"></a>
+    
+            <div class="docstring"><p>float: length of chamber [metres]</p>
+</div>
+
+
+                </section>
+                <section id="R">
+                    <div class="attr variable">
+            <span class="name">R</span>        =
+<span class="default_value">302.3</span>
+
+        
+    </div>
+    <a class="headerlink" href="#R"></a>
+    
+            <div class="docstring"><p>float: gas constant [J/(kg*K)]</p>
+</div>
+
+
+                </section>
+                <section id="T_av">
+                    <div class="attr variable">
+            <span class="name">T_av</span>        =
+<span class="default_value">2700</span>
+
+        
+    </div>
+    <a class="headerlink" href="#T_av"></a>
+    
+            <div class="docstring"><p>float: temperature [Kelvin]</p>
+</div>
+
+
+                </section>
+                <section id="D_fuelgrain">
+                    <div class="attr variable">
+            <span class="name">D_fuelgrain</span>        =
+<span class="default_value">array([0.045  , 0.07577, 0.05   , 0.078  , 0.048  , 0.083  ])</span>
+
+        
+    </div>
+    <a class="headerlink" href="#D_fuelgrain"></a>
+    
+            <div class="docstring"><p>array: fuel grain inner diameter [m]</p>
+</div>
+
+
+                </section>
+                <section id="solaris_freqs">
+                    <div class="attr variable">
+            <span class="name">solaris_freqs</span>        =
+<span class="default_value">array([884.77, 208.01, 612.97, 216.8 , 732.42, 222.66])</span>
+
+        
+    </div>
+    <a class="headerlink" href="#solaris_freqs"></a>
+    
+            <div class="docstring"><p>array: frequencies determined from hotfire data [Hz]</p>
+</div>
+
+
+                </section>
+                <section id="D_min">
+                    <div class="attr variable">
+            <span class="name">D_min</span>        =
+<input id="D_min-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+            <label class="view-value-button pdoc-button" for="D_min-view-value"></label><span class="default_value">array([0.045 , 0.0475, 0.05  , 0.0525, 0.055 , 0.0575, 0.06  , 0.0625,
+       0.065 , 0.0675, 0.07  , 0.0725, 0.075 , 0.0775, 0.08  ])</span>
+
+        
+    </div>
+    <a class="headerlink" href="#D_min"></a>
+    
+            <div class="docstring"><p>array: desired analysed diameters [m]</p>
+</div>
+
+
+                </section>
+                <section id="freqs">
+                    <div class="attr variable">
+            <span class="name">freqs</span>        =
+<input id="freqs-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+            <label class="view-value-button pdoc-button" for="freqs-view-value"></label><span class="default_value">[np.float64(723.0661276127711), np.float64(648.9568569156171), np.float64(585.6835633663445), np.float64(531.2322570216276), np.float64(484.0360027821028), np.float64(442.8609174792774), np.float64(406.7246967821836), np.float64(374.83748055446034), np.float64(346.5583215185468), np.float64(321.3627233834536), np.float64(298.8181445746654), np.float64(278.56530956782126), np.float64(260.30380594059733), np.float64(243.7808796530048), np.float64(228.78264193997816)]</span>
+
+        
+    </div>
+    <a class="headerlink" href="#freqs"></a>
+    
+            <div class="docstring"><p>array: frequencies determined from oscillation.py using D_min [Hz]</p>
+</div>
+
+
+                </section>
+                <section id="D_fine">
+                    <div class="attr variable">
+            <span class="name">D_fine</span>        =
+<input id="D_fine-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+            <label class="view-value-button pdoc-button" for="D_fine-view-value"></label><span class="default_value">array([0.045     , 0.04512709, 0.04525418, 0.04538127, 0.04550836,
+       0.04563545, 0.04576254, 0.04588963, 0.04601672, 0.04614381,
+       0.0462709 , 0.04639799, 0.04652508, 0.04665217, 0.04677926,
+       0.04690635, 0.04703344, 0.04716054, 0.04728763, 0.04741472,
+       0.04754181, 0.0476689 , 0.04779599, 0.04792308, 0.04805017,
+       0.04817726, 0.04830435, 0.04843144, 0.04855853, 0.04868562,
+       0.04881271, 0.0489398 , 0.04906689, 0.04919398, 0.04932107,
+       0.04944816, 0.04957525, 0.04970234, 0.04982943, 0.04995652,
+       0.05008361, 0.0502107 , 0.05033779, 0.05046488, 0.05059197,
+       0.05071906, 0.05084615, 0.05097324, 0.05110033, 0.05122742,
+       0.05135452, 0.05148161, 0.0516087 , 0.05173579, 0.05186288,
+       0.05198997, 0.05211706, 0.05224415, 0.05237124, 0.05249833,
+       0.05262542, 0.05275251, 0.0528796 , 0.05300669, 0.05313378,
+       0.05326087, 0.05338796, 0.05351505, 0.05364214, 0.05376923,
+       0.05389632, 0.05402341, 0.0541505 , 0.05427759, 0.05440468,
+       0.05453177, 0.05465886, 0.05478595, 0.05491304, 0.05504013,
+       0.05516722, 0.05529431, 0.0554214 , 0.05554849, 0.05567559,
+       0.05580268, 0.05592977, 0.05605686, 0.05618395, 0.05631104,
+       0.05643813, 0.05656522, 0.05669231, 0.0568194 , 0.05694649,
+       0.05707358, 0.05720067, 0.05732776, 0.05745485, 0.05758194,
+       0.05770903, 0.05783612, 0.05796321, 0.0580903 , 0.05821739,
+       0.05834448, 0.05847157, 0.05859866, 0.05872575, 0.05885284,
+       0.05897993, 0.05910702, 0.05923411, 0.0593612 , 0.05948829,
+       0.05961538, 0.05974247, 0.05986957, 0.05999666, 0.06012375,
+       0.06025084, 0.06037793, 0.06050502, 0.06063211, 0.0607592 ,
+       0.06088629, 0.06101338, 0.06114047, 0.06126756, 0.06139465,
+       0.06152174, 0.06164883, 0.06177592, 0.06190301, 0.0620301 ,
+       0.06215719, 0.06228428, 0.06241137, 0.06253846, 0.06266555,
+       0.06279264, 0.06291973, 0.06304682, 0.06317391, 0.063301  ,
+       0.06342809, 0.06355518, 0.06368227, 0.06380936, 0.06393645,
+       0.06406355, 0.06419064, 0.06431773, 0.06444482, 0.06457191,
+       0.064699  , 0.06482609, 0.06495318, 0.06508027, 0.06520736,
+       0.06533445, 0.06546154, 0.06558863, 0.06571572, 0.06584281,
+       0.0659699 , 0.06609699, 0.06622408, 0.06635117, 0.06647826,
+       0.06660535, 0.06673244, 0.06685953, 0.06698662, 0.06711371,
+       0.0672408 , 0.06736789, 0.06749498, 0.06762207, 0.06774916,
+       0.06787625, 0.06800334, 0.06813043, 0.06825753, 0.06838462,
+       0.06851171, 0.0686388 , 0.06876589, 0.06889298, 0.06902007,
+       0.06914716, 0.06927425, 0.06940134, 0.06952843, 0.06965552,
+       0.06978261, 0.0699097 , 0.07003679, 0.07016388, 0.07029097,
+       0.07041806, 0.07054515, 0.07067224, 0.07079933, 0.07092642,
+       0.07105351, 0.0711806 , 0.07130769, 0.07143478, 0.07156187,
+       0.07168896, 0.07181605, 0.07194314, 0.07207023, 0.07219732,
+       0.07232441, 0.07245151, 0.0725786 , 0.07270569, 0.07283278,
+       0.07295987, 0.07308696, 0.07321405, 0.07334114, 0.07346823,
+       0.07359532, 0.07372241, 0.0738495 , 0.07397659, 0.07410368,
+       0.07423077, 0.07435786, 0.07448495, 0.07461204, 0.07473913,
+       0.07486622, 0.07499331, 0.0751204 , 0.07524749, 0.07537458,
+       0.07550167, 0.07562876, 0.07575585, 0.07588294, 0.07601003,
+       0.07613712, 0.07626421, 0.0763913 , 0.07651839, 0.07664548,
+       0.07677258, 0.07689967, 0.07702676, 0.07715385, 0.07728094,
+       0.07740803, 0.07753512, 0.07766221, 0.0777893 , 0.07791639,
+       0.07804348, 0.07817057, 0.07829766, 0.07842475, 0.07855184,
+       0.07867893, 0.07880602, 0.07893311, 0.0790602 , 0.07918729,
+       0.07931438, 0.07944147, 0.07956856, 0.07969565, 0.07982274,
+       0.07994983, 0.08007692, 0.08020401, 0.0803311 , 0.08045819,
+       0.08058528, 0.08071237, 0.08083946, 0.08096656, 0.08109365,
+       0.08122074, 0.08134783, 0.08147492, 0.08160201, 0.0817291 ,
+       0.08185619, 0.08198328, 0.08211037, 0.08223746, 0.08236455,
+       0.08249164, 0.08261873, 0.08274582, 0.08287291, 0.083     ])</span>
+
+        
+    </div>
+    <a class="headerlink" href="#D_fine"></a>
+    
+            <div class="docstring"><p>array: range of diameters to be interpolated [m]</p>
+</div>
+
+
+                </section>
     </main>
 <script>
     function escapeHTML(html) {
