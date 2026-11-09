@@ -25,6 +25,11 @@ The script outputs plots of each interpolated method vs the analytical predictio
 the engine specs. The optimal liner dimensions are also given alongside the average target
 frequency.
 
+At the top of main.py, user adds frequency data from engine tests and engine parameters.
+Run main.py to automatically produce an overlaid plot of the interpolated methods with the given 
+data points, overlaid plot of analytical frequency data with interpolated data, and the dimensions
+an acoustic liner at the average target low frequency of the engine.
+
 ## AI Statement
 Parts of this notebook were generated with the help of AI,
 specifically the integrated Gemini 3.5 LLM.
