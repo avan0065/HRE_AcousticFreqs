@@ -7,6 +7,15 @@ interpolation methods (Linear, PCHIP, Akima), evaluates their execution times
 and prediction accuracies (MAE, RMSE), and finally sizes an optimal
 acoustic liner to mitigate target frequencies.
 """
+# Exclude some variables from pdoc
+__pdoc__ = {
+    "time_pchip": False,
+    "time_akima": False,
+    "time_linear": False,
+    "linear_model": False,
+    "pchip_model": False,
+    "akima_model": False,
+}
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -160,13 +169,3 @@ target_freq, best_diameter_m, best_freq = acoustic_liner(freqs_pchip, R)
 """floats: target frequency and optimal diameter for a liner"""
 print(f"The targeted frequency of the engine is {target_freq:.2f} Hz.")
 print(f"The optimal liner hole diameter is {best_diameter_m*1000:.2f} mm with a target frequency of {best_freq:.2f} Hz.")
-
-# Exclude some variables from pdoc
-__pdoc__ = {
-    "time_pchip": False,
-    "time_akima": False,
-    "time_linear": False,
-    "linear_model": False,
-    "pchip_model": False,
-    "akima_model": False,
-}
