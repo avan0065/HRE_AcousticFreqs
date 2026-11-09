@@ -64,22 +64,28 @@ D_fine = np.linspace(D_fuelgrain.min(), D_fuelgrain.max(), 300)
 _t0_linear = time.perf_counter()
 linear_model = plot_linear_interpolation(D_fuelgrain, solaris_freqs)
 freqs_linear = linear_model(D_fine)
+"""array: frequencies determined from linearinterpolation.py using D_min [Hz]"""
 _t1_linear = time.perf_counter()
 time_linear = _t1_linear - _t0_linear
+"""float: time needed to run linearinterpolation.py"""
 
 # Timing Regime for PCHIP
 _t0_pchip = time.perf_counter()
 pchip_model = plot_pchip_interpolation(D_fuelgrain, solaris_freqs)
 freqs_pchip = pchip_model(D_fine)
+"""array: frequencies determined from PCHIPinterpolation.py using D_min [Hz]"""
 _t1_pchip = time.perf_counter()
 time_pchip = _t1_pchip - _t0_pchip
+"""float: time needed to run PCHIPinterpolation.py"""
 
 # Timing Regime for Akima
 _t0_akima = time.perf_counter()
 akima_model = plot_akima_interpolation(D_fuelgrain, solaris_freqs)
 freqs_akima = akima_model(D_fine)
+"""array: frequencies determined from akimainterpolation.py using D_min [Hz]"""
 _t1_akima = time.perf_counter()
 time_akima = _t1_akima - _t0_akima
+"""float: time needed to run akimainterpolation.py"""
 
 # Figure 1: Overlaid Plot (just experimental data)
 plt.figure(figsize=(8, 5))
@@ -154,3 +160,13 @@ target_freq, best_diameter_m, best_freq = acoustic_liner(freqs_pchip, R)
 """floats: target frequency and optimal diameter for a liner"""
 print(f"The targeted frequency of the engine is {target_freq:.2f} Hz.")
 print(f"The optimal liner hole diameter is {best_diameter_m*1000:.2f} mm with a target frequency of {best_freq:.2f} Hz.")
+
+# Exclude some variables from pdoc
+__pdoc__ = {
+    "time_pchip": False,
+    "time_akima": False,
+    "time_linear": False,
+    "linear_model": False,
+    "pchip_model": False,
+    "akima_model": False,
+}
