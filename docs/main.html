@@ -65,6 +65,84 @@
             <li>
                     <a class="variable" href="#D_fine">D_fine</a>
             </li>
+            <li>
+                    <a class="variable" href="#t0_linear">t0_linear</a>
+            </li>
+            <li>
+                    <a class="variable" href="#linear_model">linear_model</a>
+            </li>
+            <li>
+                    <a class="variable" href="#freqs_linear">freqs_linear</a>
+            </li>
+            <li>
+                    <a class="variable" href="#t1_linear">t1_linear</a>
+            </li>
+            <li>
+                    <a class="variable" href="#time_linear">time_linear</a>
+            </li>
+            <li>
+                    <a class="variable" href="#t0_pchip">t0_pchip</a>
+            </li>
+            <li>
+                    <a class="variable" href="#pchip_model">pchip_model</a>
+            </li>
+            <li>
+                    <a class="variable" href="#freqs_pchip">freqs_pchip</a>
+            </li>
+            <li>
+                    <a class="variable" href="#t1_pchip">t1_pchip</a>
+            </li>
+            <li>
+                    <a class="variable" href="#time_pchip">time_pchip</a>
+            </li>
+            <li>
+                    <a class="variable" href="#t0_akima">t0_akima</a>
+            </li>
+            <li>
+                    <a class="variable" href="#akima_model">akima_model</a>
+            </li>
+            <li>
+                    <a class="variable" href="#freqs_akima">freqs_akima</a>
+            </li>
+            <li>
+                    <a class="variable" href="#t1_akima">t1_akima</a>
+            </li>
+            <li>
+                    <a class="variable" href="#time_akima">time_akima</a>
+            </li>
+            <li>
+                    <a class="variable" href="#y_pchip">y_pchip</a>
+            </li>
+            <li>
+                    <a class="variable" href="#y_akima">y_akima</a>
+            </li>
+            <li>
+                    <a class="variable" href="#y_linear">y_linear</a>
+            </li>
+            <li>
+                    <a class="variable" href="#rmse_pchip">rmse_pchip</a>
+            </li>
+            <li>
+                    <a class="variable" href="#rmse_akima">rmse_akima</a>
+            </li>
+            <li>
+                    <a class="variable" href="#rmse_linear">rmse_linear</a>
+            </li>
+            <li>
+                    <a class="variable" href="#mae_pchip">mae_pchip</a>
+            </li>
+            <li>
+                    <a class="variable" href="#mae_akima">mae_akima</a>
+            </li>
+            <li>
+                    <a class="variable" href="#mae_linear">mae_linear</a>
+            </li>
+            <li>
+                    <a class="variable" href="#metrics_data">metrics_data</a>
+            </li>
+            <li>
+                    <a class="variable" href="#metrics_df">metrics_df</a>
+            </li>
     </ul>
 
 
@@ -156,99 +234,98 @@ acoustic liner to mitigate target frequencies.</p>
 </span><span id="L-60"><a href="#L-60"><span class="linenos"> 60</span></a><span class="n">D_fine</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">D_fuelgrain</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">D_fuelgrain</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">300</span><span class="p">)</span>
 </span><span id="L-61"><a href="#L-61"><span class="linenos"> 61</span></a><span class="sd">"""array: range of diameters to be interpolated [m]"""</span>
 </span><span id="L-62"><a href="#L-62"><span class="linenos"> 62</span></a>
-</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>
-</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>  <span class="c1"># Timing Regime for Linear</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>  <span class="n">t0_linear</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>  <span class="n">linear_model</span> <span class="o">=</span> <span class="n">plot_linear_interpolation</span><span class="p">(</span><span class="n">D_fuelgrain</span><span class="p">,</span> <span class="n">solaris_freqs</span><span class="p">)</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a>  <span class="n">freqs_linear</span> <span class="o">=</span> <span class="n">linear_model</span><span class="p">(</span><span class="n">D_fine</span><span class="p">)</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>  <span class="n">t1_linear</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
-</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>  <span class="n">time_linear</span> <span class="o">=</span> <span class="n">t1_linear</span> <span class="o">-</span> <span class="n">t0_linear</span>
-</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a>
-</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a>  <span class="c1"># Timing Regime for PCHIP</span>
-</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a>  <span class="n">t0_pchip</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a>  <span class="n">pchip_model</span> <span class="o">=</span> <span class="n">plot_pchip_interpolation</span><span class="p">(</span><span class="n">D_fuelgrain</span><span class="p">,</span> <span class="n">solaris_freqs</span><span class="p">)</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a>  <span class="n">freqs_pchip</span> <span class="o">=</span> <span class="n">pchip_model</span><span class="p">(</span><span class="n">D_fine</span><span class="p">)</span>
-</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>  <span class="n">t1_pchip</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>  <span class="n">time_pchip</span> <span class="o">=</span> <span class="n">t1_pchip</span> <span class="o">-</span> <span class="n">t0_pchip</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>  <span class="c1"># Timing Regime for Akima</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>  <span class="n">t0_akima</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>  <span class="n">akima_model</span> <span class="o">=</span> <span class="n">plot_akima_interpolation</span><span class="p">(</span><span class="n">D_fuelgrain</span><span class="p">,</span> <span class="n">solaris_freqs</span><span class="p">)</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>  <span class="n">freqs_akima</span> <span class="o">=</span> <span class="n">akima_model</span><span class="p">(</span><span class="n">D_fine</span><span class="p">)</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>  <span class="n">t1_akima</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>  <span class="n">time_akima</span> <span class="o">=</span> <span class="n">t1_akima</span> <span class="o">-</span> <span class="n">t0_akima</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>  <span class="c1"># Figure 1: Overlaid Plot (just experimental data)</span>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">D_fuelgrain</span><span class="p">,</span> <span class="n">solaris_freqs</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'black'</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Experimental Points'</span><span class="p">)</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">D_fine</span><span class="p">,</span> <span class="n">freqs_pchip</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'green'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'PCHIP Interpolation'</span><span class="p">)</span>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">D_fine</span><span class="p">,</span> <span class="n">freqs_akima</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'red'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Akima Interpolation'</span><span class="p">)</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">D_fine</span><span class="p">,</span> <span class="n">freqs_linear</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'orange'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Linear Interpolation'</span><span class="p">)</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Comparison of Analytical Frequencies, PCHIP, and Akima Experimental Trends'</span><span class="p">)</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Fuel Grain Port Diameter (d) [m]'</span><span class="p">)</span>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Frequency (f) [Hz]'</span><span class="p">)</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s2">"both"</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>  <span class="c1"># Figure 2: Overlaid Plot (with analytical frequencies)</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">D_min</span><span class="p">,</span> <span class="n">freqs</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'black'</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">'s'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Analytical Frequencies'</span><span class="p">)</span>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">D_min</span><span class="p">,</span> <span class="n">freqs</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'blue'</span><span class="p">)</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">D_fuelgrain</span><span class="p">,</span> <span class="n">solaris_freqs</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'black'</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Experimental Points'</span><span class="p">)</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">D_fine</span><span class="p">,</span> <span class="n">freqs_pchip</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'green'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'PCHIP Interpolation'</span><span class="p">)</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">D_fine</span><span class="p">,</span> <span class="n">freqs_akima</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'red'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Akima Interpolation'</span><span class="p">)</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">D_fine</span><span class="p">,</span> <span class="n">freqs_linear</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'orange'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Linear Interpolation'</span><span class="p">)</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Comparison of Analytical Frequencies and Interpolated Experimental Trends'</span><span class="p">)</span>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Fuel Grain Port Diameter (d) [m]'</span><span class="p">)</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Frequency (f) [Hz]'</span><span class="p">)</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s2">"both"</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>  <span class="c1"># Evaluate interpolations at analytical diameter values</span>
-</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a>  <span class="n">y_pchip</span> <span class="o">=</span> <span class="n">pchip_model</span><span class="p">(</span><span class="n">D_min</span><span class="p">)</span>
-</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a>  <span class="n">y_akima</span> <span class="o">=</span> <span class="n">akima_model</span><span class="p">(</span><span class="n">D_min</span><span class="p">)</span>
-</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>  <span class="n">y_linear</span> <span class="o">=</span> <span class="n">linear_model</span><span class="p">(</span><span class="n">D_min</span><span class="p">)</span>
-</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a>
-</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a>  <span class="c1"># Calculate RMSE</span>
-</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a>  <span class="n">rmse_pchip</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">freqs</span> <span class="o">-</span> <span class="n">y_pchip</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
-</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="w">  </span><span class="sd">"""float: RMSE of PCHIP interpolation vs analytical"""</span>
-</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a>  <span class="n">rmse_akima</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">freqs</span> <span class="o">-</span> <span class="n">y_akima</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
-</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="w">  </span><span class="sd">"""float: RMSE of Akima interpolation vs analytical"""</span>
-</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a>  <span class="n">rmse_linear</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">freqs</span> <span class="o">-</span> <span class="n">y_linear</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
-</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a><span class="w">  </span><span class="sd">"""float: RMSE of linear interpolation vs analytical"""</span>
-</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a>
-</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a>  <span class="c1"># Calculate MAE</span>
-</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a>  <span class="n">mae_pchip</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">freqs</span> <span class="o">-</span> <span class="n">y_pchip</span><span class="p">))</span>
-</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a><span class="w">  </span><span class="sd">"""float: MAE of PCHIP interpolation vs analytical"""</span>
-</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a>  <span class="n">mae_akima</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">freqs</span> <span class="o">-</span> <span class="n">y_akima</span><span class="p">))</span>
-</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a><span class="w">  </span><span class="sd">"""float: MAE of Akima interpolation vs analytical"""</span>
-</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a>  <span class="n">mae_linear</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">freqs</span> <span class="o">-</span> <span class="n">y_linear</span><span class="p">))</span>
-</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a><span class="w">  </span><span class="sd">"""float: MAE of linear interpolation vs analytical"""</span>
-</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a>
-</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a>  <span class="c1"># Create comparison table</span>
-</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>  <span class="n">metrics_data</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>      <span class="s1">'Interpolation Method'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'Linear'</span><span class="p">,</span> <span class="s1">'PCHIP'</span><span class="p">,</span> <span class="s1">'Akima'</span><span class="p">],</span>
-</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>      <span class="s1">'MAE (Hz)'</span><span class="p">:</span> <span class="p">[</span><span class="n">mae_linear</span><span class="p">,</span> <span class="n">mae_pchip</span><span class="p">,</span> <span class="n">mae_akima</span><span class="p">],</span>
-</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>      <span class="s1">'RMSE (Hz)'</span><span class="p">:</span> <span class="p">[</span><span class="n">rmse_linear</span><span class="p">,</span> <span class="n">rmse_pchip</span><span class="p">,</span> <span class="n">rmse_akima</span><span class="p">],</span>
-</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a>      <span class="s1">'Execution Time (ms)'</span><span class="p">:</span> <span class="p">[</span><span class="n">time_linear</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">time_pchip</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">time_akima</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">]</span>
-</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a>  <span class="p">}</span>
-</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="w">  </span><span class="sd">"""table: comparison of each interpolation method (RMSE, MAE, and timing)"""</span>
-</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a>  <span class="n">metrics_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">metrics_data</span><span class="p">)</span>
-</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>  <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">--- Performance Evaluation Metrics ---"</span><span class="p">)</span>
-</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>  <span class="nb">print</span><span class="p">(</span><span class="n">metrics_df</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>  <span class="k">if</span> <span class="s1">'liner_size'</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>      <span class="n">importlib</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">'liner_size'</span><span class="p">])</span>
-</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>  <span class="kn">from</span><span class="w"> </span><span class="nn">liner_size</span><span class="w"> </span><span class="kn">import</span> <span class="n">acoustic_liner</span>
-</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a>
-</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a>  <span class="c1"># Calculate optimal liner size</span>
-</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a>  <span class="n">target_freq</span><span class="p">,</span> <span class="n">best_diameter_m</span><span class="p">,</span> <span class="n">best_freq</span> <span class="o">=</span> <span class="n">acoustic_liner</span><span class="p">(</span><span class="n">freqs_pchip</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span>
-</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="w">  </span><span class="sd">"""floats: target frequency and optimal diameter for a liner"""</span>
-</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a>  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"The targeted frequency of the engine is </span><span class="si">{</span><span class="n">target_freq</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> Hz."</span><span class="p">)</span>
-</span><span id="L-155"><a href="#L-155"><span class="linenos">155</span></a>  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"The optimal liner hole diameter is </span><span class="si">{</span><span class="n">best_diameter_m</span><span class="o">*</span><span class="mi">1000</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> mm with a target frequency of </span><span class="si">{</span><span class="n">best_freq</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> Hz."</span><span class="p">)</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos"> 63</span></a>
+</span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a><span class="c1"># Timing Regime for Linear</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a><span class="n">t0_linear</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a><span class="n">linear_model</span> <span class="o">=</span> <span class="n">plot_linear_interpolation</span><span class="p">(</span><span class="n">D_fuelgrain</span><span class="p">,</span> <span class="n">solaris_freqs</span><span class="p">)</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a><span class="n">freqs_linear</span> <span class="o">=</span> <span class="n">linear_model</span><span class="p">(</span><span class="n">D_fine</span><span class="p">)</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="n">t1_linear</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+</span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a><span class="n">time_linear</span> <span class="o">=</span> <span class="n">t1_linear</span> <span class="o">-</span> <span class="n">t0_linear</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>
+</span><span id="L-71"><a href="#L-71"><span class="linenos"> 71</span></a><span class="c1"># Timing Regime for PCHIP</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos"> 72</span></a><span class="n">t0_pchip</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos"> 73</span></a><span class="n">pchip_model</span> <span class="o">=</span> <span class="n">plot_pchip_interpolation</span><span class="p">(</span><span class="n">D_fuelgrain</span><span class="p">,</span> <span class="n">solaris_freqs</span><span class="p">)</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos"> 74</span></a><span class="n">freqs_pchip</span> <span class="o">=</span> <span class="n">pchip_model</span><span class="p">(</span><span class="n">D_fine</span><span class="p">)</span>
+</span><span id="L-75"><a href="#L-75"><span class="linenos"> 75</span></a><span class="n">t1_pchip</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a><span class="n">time_pchip</span> <span class="o">=</span> <span class="n">t1_pchip</span> <span class="o">-</span> <span class="n">t0_pchip</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>
+</span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a><span class="c1"># Timing Regime for Akima</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a><span class="n">t0_akima</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a><span class="n">akima_model</span> <span class="o">=</span> <span class="n">plot_akima_interpolation</span><span class="p">(</span><span class="n">D_fuelgrain</span><span class="p">,</span> <span class="n">solaris_freqs</span><span class="p">)</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a><span class="n">freqs_akima</span> <span class="o">=</span> <span class="n">akima_model</span><span class="p">(</span><span class="n">D_fine</span><span class="p">)</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="n">t1_akima</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a><span class="n">time_akima</span> <span class="o">=</span> <span class="n">t1_akima</span> <span class="o">-</span> <span class="n">t0_akima</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a><span class="c1"># Figure 1: Overlaid Plot (just experimental data)</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">D_fuelgrain</span><span class="p">,</span> <span class="n">solaris_freqs</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'black'</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Experimental Points'</span><span class="p">)</span>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">D_fine</span><span class="p">,</span> <span class="n">freqs_pchip</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'green'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'PCHIP Interpolation'</span><span class="p">)</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">D_fine</span><span class="p">,</span> <span class="n">freqs_akima</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'red'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Akima Interpolation'</span><span class="p">)</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">D_fine</span><span class="p">,</span> <span class="n">freqs_linear</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'orange'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Linear Interpolation'</span><span class="p">)</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Comparison of Analytical Frequencies, PCHIP, and Akima Experimental Trends'</span><span class="p">)</span>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Fuel Grain Port Diameter (d) [m]'</span><span class="p">)</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Frequency (f) [Hz]'</span><span class="p">)</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s2">"both"</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a><span class="c1"># Figure 2: Overlaid Plot (with analytical frequencies)</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">D_min</span><span class="p">,</span> <span class="n">freqs</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'black'</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">'s'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Analytical Frequencies'</span><span class="p">)</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">D_min</span><span class="p">,</span> <span class="n">freqs</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'blue'</span><span class="p">)</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">D_fuelgrain</span><span class="p">,</span> <span class="n">solaris_freqs</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'black'</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Experimental Points'</span><span class="p">)</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">D_fine</span><span class="p">,</span> <span class="n">freqs_pchip</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'green'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'PCHIP Interpolation'</span><span class="p">)</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">D_fine</span><span class="p">,</span> <span class="n">freqs_akima</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'red'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Akima Interpolation'</span><span class="p">)</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">D_fine</span><span class="p">,</span> <span class="n">freqs_linear</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'orange'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Linear Interpolation'</span><span class="p">)</span>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Comparison of Analytical Frequencies and Interpolated Experimental Trends'</span><span class="p">)</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Fuel Grain Port Diameter (d) [m]'</span><span class="p">)</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Frequency (f) [Hz]'</span><span class="p">)</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s2">"both"</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>
+</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="c1"># Evaluate interpolations at analytical diameter values</span>
+</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a><span class="n">y_pchip</span> <span class="o">=</span> <span class="n">pchip_model</span><span class="p">(</span><span class="n">D_min</span><span class="p">)</span>
+</span><span id="L-115"><a href="#L-115"><span class="linenos">115</span></a><span class="n">y_akima</span> <span class="o">=</span> <span class="n">akima_model</span><span class="p">(</span><span class="n">D_min</span><span class="p">)</span>
+</span><span id="L-116"><a href="#L-116"><span class="linenos">116</span></a><span class="n">y_linear</span> <span class="o">=</span> <span class="n">linear_model</span><span class="p">(</span><span class="n">D_min</span><span class="p">)</span>
+</span><span id="L-117"><a href="#L-117"><span class="linenos">117</span></a>
+</span><span id="L-118"><a href="#L-118"><span class="linenos">118</span></a><span class="c1"># Calculate RMSE</span>
+</span><span id="L-119"><a href="#L-119"><span class="linenos">119</span></a><span class="n">rmse_pchip</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">freqs</span> <span class="o">-</span> <span class="n">y_pchip</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+</span><span id="L-120"><a href="#L-120"><span class="linenos">120</span></a><span class="sd">"""float: RMSE of PCHIP interpolation vs analytical"""</span>
+</span><span id="L-121"><a href="#L-121"><span class="linenos">121</span></a><span class="n">rmse_akima</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">freqs</span> <span class="o">-</span> <span class="n">y_akima</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+</span><span id="L-122"><a href="#L-122"><span class="linenos">122</span></a><span class="sd">"""float: RMSE of Akima interpolation vs analytical"""</span>
+</span><span id="L-123"><a href="#L-123"><span class="linenos">123</span></a><span class="n">rmse_linear</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">freqs</span> <span class="o">-</span> <span class="n">y_linear</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+</span><span id="L-124"><a href="#L-124"><span class="linenos">124</span></a><span class="sd">"""float: RMSE of linear interpolation vs analytical"""</span>
+</span><span id="L-125"><a href="#L-125"><span class="linenos">125</span></a>
+</span><span id="L-126"><a href="#L-126"><span class="linenos">126</span></a><span class="c1"># Calculate MAE</span>
+</span><span id="L-127"><a href="#L-127"><span class="linenos">127</span></a><span class="n">mae_pchip</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">freqs</span> <span class="o">-</span> <span class="n">y_pchip</span><span class="p">))</span>
+</span><span id="L-128"><a href="#L-128"><span class="linenos">128</span></a><span class="sd">"""float: MAE of PCHIP interpolation vs analytical"""</span>
+</span><span id="L-129"><a href="#L-129"><span class="linenos">129</span></a><span class="n">mae_akima</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">freqs</span> <span class="o">-</span> <span class="n">y_akima</span><span class="p">))</span>
+</span><span id="L-130"><a href="#L-130"><span class="linenos">130</span></a><span class="sd">"""float: MAE of Akima interpolation vs analytical"""</span>
+</span><span id="L-131"><a href="#L-131"><span class="linenos">131</span></a><span class="n">mae_linear</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">freqs</span> <span class="o">-</span> <span class="n">y_linear</span><span class="p">))</span>
+</span><span id="L-132"><a href="#L-132"><span class="linenos">132</span></a><span class="sd">"""float: MAE of linear interpolation vs analytical"""</span>
+</span><span id="L-133"><a href="#L-133"><span class="linenos">133</span></a>
+</span><span id="L-134"><a href="#L-134"><span class="linenos">134</span></a><span class="c1"># Create comparison table</span>
+</span><span id="L-135"><a href="#L-135"><span class="linenos">135</span></a><span class="n">metrics_data</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="L-136"><a href="#L-136"><span class="linenos">136</span></a>    <span class="s1">'Interpolation Method'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'Linear'</span><span class="p">,</span> <span class="s1">'PCHIP'</span><span class="p">,</span> <span class="s1">'Akima'</span><span class="p">],</span>
+</span><span id="L-137"><a href="#L-137"><span class="linenos">137</span></a>    <span class="s1">'MAE (Hz)'</span><span class="p">:</span> <span class="p">[</span><span class="n">mae_linear</span><span class="p">,</span> <span class="n">mae_pchip</span><span class="p">,</span> <span class="n">mae_akima</span><span class="p">],</span>
+</span><span id="L-138"><a href="#L-138"><span class="linenos">138</span></a>    <span class="s1">'RMSE (Hz)'</span><span class="p">:</span> <span class="p">[</span><span class="n">rmse_linear</span><span class="p">,</span> <span class="n">rmse_pchip</span><span class="p">,</span> <span class="n">rmse_akima</span><span class="p">],</span>
+</span><span id="L-139"><a href="#L-139"><span class="linenos">139</span></a>    <span class="s1">'Execution Time (ms)'</span><span class="p">:</span> <span class="p">[</span><span class="n">time_linear</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">time_pchip</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">time_akima</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">]</span>
+</span><span id="L-140"><a href="#L-140"><span class="linenos">140</span></a><span class="p">}</span>
+</span><span id="L-141"><a href="#L-141"><span class="linenos">141</span></a><span class="sd">"""table: comparison of each interpolation method (RMSE, MAE, and timing)"""</span>
+</span><span id="L-142"><a href="#L-142"><span class="linenos">142</span></a><span class="n">metrics_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">metrics_data</span><span class="p">)</span>
+</span><span id="L-143"><a href="#L-143"><span class="linenos">143</span></a><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">--- Performance Evaluation Metrics ---"</span><span class="p">)</span>
+</span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a><span class="nb">print</span><span class="p">(</span><span class="n">metrics_df</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>
+</span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a><span class="k">if</span> <span class="s1">'liner_size'</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>    <span class="n">importlib</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">'liner_size'</span><span class="p">])</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">liner_size</span><span class="w"> </span><span class="kn">import</span> <span class="n">acoustic_liner</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>
+</span><span id="L-150"><a href="#L-150"><span class="linenos">150</span></a><span class="c1"># Calculate optimal liner size</span>
+</span><span id="L-151"><a href="#L-151"><span class="linenos">151</span></a><span class="n">target_freq</span><span class="p">,</span> <span class="n">best_diameter_m</span><span class="p">,</span> <span class="n">best_freq</span> <span class="o">=</span> <span class="n">acoustic_liner</span><span class="p">(</span><span class="n">freqs_pchip</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span>
+</span><span id="L-152"><a href="#L-152"><span class="linenos">152</span></a><span class="sd">"""floats: target frequency and optimal diameter for a liner"""</span>
+</span><span id="L-153"><a href="#L-153"><span class="linenos">153</span></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"The targeted frequency of the engine is </span><span class="si">{</span><span class="n">target_freq</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> Hz."</span><span class="p">)</span>
+</span><span id="L-154"><a href="#L-154"><span class="linenos">154</span></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"The optimal liner hole diameter is </span><span class="si">{</span><span class="n">best_diameter_m</span><span class="o">*</span><span class="mi">1000</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> mm with a target frequency of </span><span class="si">{</span><span class="n">best_freq</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> Hz."</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -468,6 +545,574 @@ acoustic liner to mitigate target frequencies.</p>
             <div class="docstring"><p>array: range of diameters to be interpolated [m]</p>
 </div>
 
+
+                </section>
+                <section id="t0_linear">
+                    <div class="attr variable">
+            <span class="name">t0_linear</span>        =
+<span class="default_value">4453.193076595</span>
+
+        
+    </div>
+    <a class="headerlink" href="#t0_linear"></a>
+    
+    
+
+                </section>
+                <section id="linear_model">
+                    <div class="attr variable">
+            <span class="name">linear_model</span>        =
+<span class="default_value">&lt;scipy.interpolate._interpolate.interp1d object&gt;</span>
+
+        
+    </div>
+    <a class="headerlink" href="#linear_model"></a>
+    
+    
+
+                </section>
+                <section id="freqs_linear">
+                    <div class="attr variable">
+            <span class="name">freqs_linear</span>        =
+<input id="freqs_linear-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+            <label class="view-value-button pdoc-button" for="freqs_linear-view-value"></label><span class="default_value">array([884.77      , 878.31593088, 871.86186176, 865.40779264,
+       858.95372352, 852.4996544 , 846.04558528, 839.59151616,
+       833.13744705, 826.68337793, 820.22930881, 813.77523969,
+       807.32117057, 800.86710145, 794.41303233, 787.95896321,
+       781.50489409, 775.05082497, 768.59675585, 762.14268673,
+       755.68861761, 749.23454849, 742.78047938, 736.32641026,
+       729.42376254, 721.83329431, 714.24282609, 706.65235786,
+       699.06188963, 691.4714214 , 683.88095318, 676.29048495,
+       668.70001672, 661.10954849, 653.51908027, 645.92861204,
+       638.33814381, 630.74767559, 623.15720736, 615.56673913,
+       611.65608724, 609.65893985, 607.66179246, 605.66464507,
+       603.66749767, 601.67035028, 599.67320289, 597.6760555 ,
+       595.67890811, 593.68176071, 591.68461332, 589.68746593,
+       587.69031854, 585.69317114, 583.69602375, 581.69887636,
+       579.70172897, 577.70458158, 575.70743418, 573.71028679,
+       571.7131394 , 569.71599201, 567.71884462, 565.72169722,
+       563.72454983, 561.72740244, 559.73025505, 557.73310766,
+       555.73596026, 553.73881287, 551.74166548, 549.74451809,
+       547.74737069, 545.7502233 , 543.75307591, 541.75592852,
+       539.75878113, 537.76163373, 535.76448634, 533.76733895,
+       531.77019156, 529.77304417, 527.77589677, 525.77874938,
+       523.78160199, 521.7844546 , 519.78730721, 517.79015981,
+       515.79301242, 513.79586503, 511.79871764, 509.80157025,
+       507.80442285, 505.80727546, 503.81012807, 501.81298068,
+       499.81583328, 497.81868589, 495.8215385 , 493.82439111,
+       491.82724372, 489.83009632, 487.83294893, 485.83580154,
+       483.83865415, 481.84150676, 479.84435936, 477.84721197,
+       475.85006458, 473.85291719, 471.8557698 , 469.8586224 ,
+       467.86147501, 465.86432762, 463.86718023, 461.87003283,
+       459.87288544, 457.87573805, 455.87859066, 453.88144327,
+       451.88429587, 449.88714848, 447.89000109, 445.8928537 ,
+       443.89570631, 441.89855891, 439.90141152, 437.90426413,
+       435.90711674, 433.90996935, 431.91282195, 429.91567456,
+       427.91852717, 425.92137978, 423.92423239, 421.92708499,
+       419.9299376 , 417.93279021, 415.93564282, 413.93849542,
+       411.94134803, 409.94420064, 407.94705325, 405.94990586,
+       403.95275846, 401.95561107, 399.95846368, 397.96131629,
+       395.9641689 , 393.9670215 , 391.96987411, 389.97272672,
+       387.97557933, 385.97843194, 383.98128454, 381.98413715,
+       379.98698976, 377.98984237, 375.99269497, 373.99554758,
+       371.99840019, 370.0012528 , 368.00410541, 366.00695801,
+       364.00981062, 362.01266323, 360.01551584, 358.01836845,
+       356.02122105, 354.02407366, 352.02692627, 350.02977888,
+       348.03263149, 346.03548409, 344.0383367 , 342.04118931,
+       340.04404192, 338.04689452, 336.04974713, 334.05259974,
+       332.05545235, 330.05830496, 328.06115756, 326.06401017,
+       324.06686278, 322.06971539, 320.072568  , 318.0754206 ,
+       316.07827321, 314.08112582, 312.08397843, 310.08683104,
+       308.08968364, 306.09253625, 304.09538886, 302.09824147,
+       300.10109408, 298.10394668, 296.10679929, 294.1096519 ,
+       292.11250451, 290.11535711, 288.11820972, 286.12106233,
+       284.12391494, 282.12676755, 280.12962015, 278.13247276,
+       276.13532537, 274.13817798, 272.14103059, 270.14388319,
+       268.1467358 , 266.14958841, 264.15244102, 262.15529363,
+       260.15814623, 258.16099884, 256.16385145, 254.16670406,
+       252.16955666, 250.17240927, 248.17526188, 246.17811449,
+       244.1809671 , 242.1838197 , 240.18667231, 238.18952492,
+       236.19237753, 234.19523014, 232.19808274, 230.20093535,
+       228.20378796, 226.20664057, 224.20949318, 222.21234578,
+       220.21519839, 218.218051  , 216.22090361, 214.22375621,
+       212.22660882, 210.22946143, 208.23231404, 208.45518845,
+       208.9561408 , 209.45709315, 209.9580455 , 210.45899786,
+       210.95995021, 211.46090256, 211.96185491, 212.46280726,
+       212.96375962, 213.46471197, 213.96566432, 214.46661667,
+       214.96756903, 215.46852138, 215.96947373, 216.47042608,
+       216.85095652, 216.99990635, 217.14885619, 217.29780602,
+       217.44675585, 217.59570569, 217.74465552, 217.89360535,
+       218.04255518, 218.19150502, 218.34045485, 218.48940468,
+       218.63835452, 218.78730435, 218.93625418, 219.08520401,
+       219.23415385, 219.38310368, 219.53205351, 219.68100334,
+       219.82995318, 219.97890301, 220.12785284, 220.27680268,
+       220.42575251, 220.57470234, 220.72365217, 220.87260201,
+       221.02155184, 221.17050167, 221.31945151, 221.46840134,
+       221.61735117, 221.766301  , 221.91525084, 222.06420067,
+       222.2131505 , 222.36210033, 222.51105017, 222.66      ])</span>
+
+        
+    </div>
+    <a class="headerlink" href="#freqs_linear"></a>
+    
+    
+
+                </section>
+                <section id="t1_linear">
+                    <div class="attr variable">
+            <span class="name">t1_linear</span>        =
+<span class="default_value">4453.531085117</span>
+
+        
+    </div>
+    <a class="headerlink" href="#t1_linear"></a>
+    
+    
+
+                </section>
+                <section id="time_linear">
+                    <div class="attr variable">
+            <span class="name">time_linear</span>        =
+<span class="default_value">0.3380085219996545</span>
+
+        
+    </div>
+    <a class="headerlink" href="#time_linear"></a>
+    
+    
+
+                </section>
+                <section id="t0_pchip">
+                    <div class="attr variable">
+            <span class="name">t0_pchip</span>        =
+<span class="default_value">4453.531087296</span>
+
+        
+    </div>
+    <a class="headerlink" href="#t0_pchip"></a>
+    
+    
+
+                </section>
+                <section id="pchip_model">
+                    <div class="attr variable">
+            <span class="name">pchip_model</span>        =
+<span class="default_value">&lt;scipy.interpolate._cubic.PchipInterpolator object&gt;</span>
+
+        
+    </div>
+    <a class="headerlink" href="#pchip_model"></a>
+    
+    
+
+                </section>
+                <section id="freqs_pchip">
+                    <div class="attr variable">
+            <span class="name">freqs_pchip</span>        =
+<input id="freqs_pchip-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+            <label class="view-value-button pdoc-button" for="freqs_pchip-view-value"></label><span class="default_value">array([884.77      , 878.96394486, 873.09111294, 867.15281556,
+       861.15036404, 855.08506968, 848.95824381, 842.77119773,
+       836.52524275, 830.2216902 , 823.86185137, 817.44703759,
+       810.97856017, 804.45773042, 797.88585966, 791.26425919,
+       784.59424034, 777.87711441, 771.11419271, 764.30678657,
+       757.45620729, 750.56376618, 743.63077457, 736.65854375,
+       729.60334465, 722.07323086, 714.06186865, 705.67520826,
+       697.01919992, 688.19979388, 679.32294037, 670.49458962,
+       661.82069188, 653.40719738, 645.36005636, 637.78521904,
+       630.78863568, 624.4762565 , 618.95403175, 614.32791166,
+       610.47752486, 606.70203104, 602.94232821, 599.19844563,
+       595.47041257, 591.75825829, 588.06201206, 584.38170315,
+       580.71736082, 577.06901435, 573.43669299, 569.82042602,
+       566.22024269, 562.63617229, 559.06824407, 555.5164873 ,
+       551.98093125, 548.46160518, 544.95853837, 541.47176007,
+       538.00129956, 534.5471861 , 531.10944896, 527.68811741,
+       524.2832207 , 520.89478812, 517.52284892, 514.16743237,
+       510.82856774, 507.5062843 , 504.20061131, 500.91157804,
+       497.63921375, 494.38354772, 491.14460921, 487.92242748,
+       484.7170318 , 481.52845145, 478.35671568, 475.20185376,
+       472.06389496, 468.94286855, 465.8388038 , 462.75172996,
+       459.68167631, 456.62867211, 453.59274664, 450.57392915,
+       447.57224891, 444.58773519, 441.62041726, 438.67032439,
+       435.73748583, 432.82193086, 429.92368875, 427.04278876,
+       424.17926015, 421.3331322 , 418.50443417, 415.69319533,
+       412.89944494, 410.12321227, 407.36452659, 404.62341716,
+       401.89991326, 399.19404415, 396.50583908, 393.83532734,
+       391.18253819, 388.5475009 , 385.93024472, 383.33079894,
+       380.74919281, 378.1854556 , 375.63961658, 373.11170501,
+       370.60175017, 368.10978131, 365.63582772, 363.17991864,
+       360.74208335, 358.32235112, 355.92075121, 353.53731289,
+       351.17206543, 348.82503809, 346.49626014, 344.18576084,
+       341.89356947, 339.61971529, 337.36422756, 335.12713556,
+       332.90846855, 330.70825579, 328.52652656, 326.36331011,
+       324.21863573, 322.09253267, 319.98503019, 317.89615758,
+       315.82594409, 313.77441899, 311.74161154, 309.72755102,
+       307.73226669, 305.75578782, 303.79814367, 301.85936352,
+       299.93947662, 298.03851224, 296.15649966, 294.29346813,
+       292.44944693, 290.62446532, 288.81855257, 287.03173794,
+       285.2640507 , 283.51552013, 281.78617547, 280.07604601,
+       278.38516101, 276.71354973, 275.06124145, 273.42826542,
+       271.81465092, 270.22042721, 268.64562356, 267.09026923,
+       265.5543935 , 264.03802562, 262.54119488, 261.06393052,
+       259.60626182, 258.16821805, 256.74982848, 255.35112236,
+       253.97212897, 252.61287757, 251.27339743, 249.95371781,
+       248.65386799, 247.37387723, 246.1137748 , 244.87358996,
+       243.65335198, 242.45309013, 241.27283367, 240.11261187,
+       238.97245399, 237.85238931, 236.7524471 , 235.6726566 ,
+       234.61304711, 233.57364787, 232.55448816, 231.55559725,
+       230.57700439, 229.61873886, 228.68082993, 227.76330686,
+       226.86619892, 225.98953537, 225.13334548, 224.29765852,
+       223.48250375, 222.68791045, 221.91390787, 221.16052529,
+       220.42779197, 219.71573718, 219.02439019, 218.35378025,
+       217.70393665, 217.07488864, 216.46666549, 215.87929647,
+       215.31281085, 214.76723789, 214.24260686, 213.73894702,
+       213.25628765, 212.794658  , 212.35408735, 211.93460497,
+       211.53624011, 211.15902205, 210.80298005, 210.46814338,
+       210.15454131, 209.8622031 , 209.59115802, 209.34143534,
+       209.11306432, 208.90607423, 208.72049434, 208.55635391,
+       208.41368221, 208.29250851, 208.19286207, 208.11477217,
+       208.05826806, 208.02337901, 208.01013429, 208.06481773,
+       208.24884673, 208.54825985, 208.94833946, 209.43436792,
+       209.99162761, 210.6054009 , 211.26097015, 211.94361773,
+       212.63862601, 213.33127736, 214.00685415, 214.65063875,
+       215.24791353, 215.78396086, 216.2440631 , 216.61350263,
+       216.88425354, 217.12887114, 217.37085708, 217.61001282,
+       217.84613987, 218.07903968, 218.30851376, 218.53436356,
+       218.75639058, 218.97439629, 219.18818218, 219.39754972,
+       219.60230039, 219.80223567, 219.99715705, 220.186866  ,
+       220.371164  , 220.54985254, 220.72273308, 220.88960712,
+       221.05027613, 221.20454158, 221.35220498, 221.49306778,
+       221.62693147, 221.75359753, 221.87286744, 221.98454269,
+       222.08842474, 222.18431508, 222.27201519, 222.35132655,
+       222.42205065, 222.48398894, 222.53694293, 222.58071409,
+       222.6151039 , 222.63991383, 222.65494537, 222.66      ])</span>
+
+        
+    </div>
+    <a class="headerlink" href="#freqs_pchip"></a>
+    
+    
+
+                </section>
+                <section id="t1_pchip">
+                    <div class="attr variable">
+            <span class="name">t1_pchip</span>        =
+<span class="default_value">4453.531970637</span>
+
+        
+    </div>
+    <a class="headerlink" href="#t1_pchip"></a>
+    
+    
+
+                </section>
+                <section id="time_pchip">
+                    <div class="attr variable">
+            <span class="name">time_pchip</span>        =
+<span class="default_value">0.0008833410001898301</span>
+
+        
+    </div>
+    <a class="headerlink" href="#time_pchip"></a>
+    
+    
+
+                </section>
+                <section id="t0_akima">
+                    <div class="attr variable">
+            <span class="name">t0_akima</span>        =
+<span class="default_value">4453.531972106</span>
+
+        
+    </div>
+    <a class="headerlink" href="#t0_akima"></a>
+    
+    
+
+                </section>
+                <section id="akima_model">
+                    <div class="attr variable">
+            <span class="name">akima_model</span>        =
+<span class="default_value">&lt;scipy.interpolate._cubic.Akima1DInterpolator object&gt;</span>
+
+        
+    </div>
+    <a class="headerlink" href="#akima_model"></a>
+    
+    
+
+                </section>
+                <section id="freqs_akima">
+                    <div class="attr variable">
+            <span class="name">freqs_akima</span>        =
+<input id="freqs_akima-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+            <label class="view-value-button pdoc-button" for="freqs_akima-view-value"></label><span class="default_value">array([884.77      , 878.84479336, 872.84361391, 866.77051369,
+       860.62954471, 854.42475902, 848.16020864, 841.8399456 ,
+       835.46802192, 829.04848963, 822.58540076, 816.08280735,
+       809.54476141, 802.97531498, 796.37852008, 789.75842875,
+       783.11909301, 776.46456488, 769.79889641, 763.12613961,
+       756.45034651, 749.77556915, 743.10585954, 736.44526972,
+       729.76124174, 722.73044503, 715.32832327, 707.62013115,
+       699.67112336, 691.5465546 , 683.31167955, 675.03175291,
+       666.77202936, 658.5977636 , 650.57421032, 642.7666242 ,
+       635.24025994, 628.06037224, 621.29221577, 615.00104524,
+       609.13822496, 603.35743814, 597.62894787, 591.95253609,
+       586.32798475, 580.75507578, 575.23359113, 569.76331273,
+       564.34402253, 558.97550247, 553.6575345 , 548.38990054,
+       543.17238255, 538.00476246, 532.88682222, 527.81834376,
+       522.79910904, 517.82889998, 512.90749853, 508.03468663,
+       503.21024622, 498.43395925, 493.70560766, 489.02497337,
+       484.39183835, 479.80598452, 475.26719384, 470.77524823,
+       466.32992965, 461.93102003, 457.57830131, 453.27155544,
+       449.01056435, 444.79511   , 440.62497431, 436.49993923,
+       432.4197867 , 428.38429866, 424.39325706, 420.44644383,
+       416.54364092, 412.68463027, 408.86919381, 405.09711349,
+       401.36817126, 397.68214904, 394.03882879, 390.43799244,
+       386.87942194, 383.36289922, 379.88820623, 376.45512491,
+       373.06343719, 369.71292503, 366.40337036, 363.13455513,
+       359.90626127, 356.71827072, 353.57036543, 350.46232734,
+       347.39393839, 344.36498052, 341.37523567, 338.42448578,
+       335.5125128 , 332.63909866, 329.80402531, 327.00707468,
+       324.24802873, 321.52666938, 318.84277858, 316.19613828,
+       313.58653041, 311.01373691, 308.47753973, 305.9777208 ,
+       303.51406207, 301.08634549, 298.69435298, 296.33786649,
+       294.01666797, 291.73053935, 289.47926257, 287.26261958,
+       285.08039232, 282.93236272, 280.81831273, 278.7380243 ,
+       276.69127936, 274.67785985, 272.69754771, 270.75012489,
+       268.83537332, 266.95307496, 265.10301173, 263.28496558,
+       261.49871845, 259.74405229, 258.02074903, 256.32859061,
+       254.66735898, 253.03683608, 251.43680384, 249.86704421,
+       248.32733914, 246.81747055, 245.3372204 , 243.88637062,
+       242.46470316, 241.07199995, 239.70804294, 238.37261407,
+       237.06549528, 235.78646851, 234.53531571, 233.3118188 ,
+       232.11575974, 230.94692047, 229.80508292, 228.69002904,
+       227.60154077, 226.53940005, 225.50338882, 224.49328902,
+       223.5088826 , 222.54995149, 221.61627764, 220.70764299,
+       219.82382947, 218.96461904, 218.12979362, 217.31913517,
+       216.53242562, 215.76944691, 215.02998099, 214.3138098 ,
+       213.62071527, 212.95047935, 212.30288399, 211.67771111,
+       211.07474267, 210.4937606 , 209.93454684, 209.39688334,
+       208.88055204, 208.38533488, 207.91101379, 207.45737073,
+       207.02418763, 206.61124643, 206.21832907, 205.8452175 ,
+       205.49169366, 205.15753948, 204.84253692, 204.5464679 ,
+       204.26911438, 204.01025828, 203.76968156, 203.54716616,
+       203.34249401, 203.15544705, 202.98580724, 202.8333565 ,
+       202.69787679, 202.57915004, 202.47695819, 202.39108318,
+       202.32130696, 202.26741146, 202.22917864, 202.20639042,
+       202.19882875, 202.20627557, 202.22851282, 202.26532245,
+       202.31648639, 202.38178659, 202.46100498, 202.55392351,
+       202.66032413, 202.77998876, 202.91269935, 203.05823785,
+       203.21638618, 203.38692631, 203.56964016, 203.76430968,
+       203.9707168 , 204.18864348, 204.41787164, 204.65818324,
+       204.90936021, 205.1711845 , 205.44343804, 205.72590278,
+       206.01836065, 206.32059361, 206.63238358, 206.95351252,
+       207.28376236, 207.62291504, 207.97075251, 208.34990875,
+       208.78966741, 209.28151004, 209.81654168, 210.3858674 ,
+       210.98059228, 211.59182136, 212.21065972, 212.82821243,
+       213.43558453, 214.0238811 , 214.58420721, 215.10766791,
+       215.58536827, 216.00841336, 216.36790823, 216.65495796,
+       216.86609075, 217.06212347, 217.26199381, 217.46518803,
+       217.67119239, 217.87949317, 218.08957661, 218.30092898,
+       218.51303656, 218.72538559, 218.93746234, 219.14875308,
+       219.35874407, 219.56692157, 219.77277184, 219.97578115,
+       220.17543577, 220.37122195, 220.56262595, 220.74913404,
+       220.93023249, 221.10540756, 221.2741455 , 221.43593259,
+       221.59025508, 221.73659924, 221.87445133, 222.00329762,
+       222.12262436, 222.23191782, 222.33066427, 222.41834997,
+       222.49446118, 222.55848416, 222.60990517, 222.64821049,
+       222.67288636, 222.68341907, 222.67929486, 222.66      ])</span>
+
+        
+    </div>
+    <a class="headerlink" href="#freqs_akima"></a>
+    
+    
+
+                </section>
+                <section id="t1_akima">
+                    <div class="attr variable">
+            <span class="name">t1_akima</span>        =
+<span class="default_value">4453.532556289</span>
+
+        
+    </div>
+    <a class="headerlink" href="#t1_akima"></a>
+    
+    
+
+                </section>
+                <section id="time_akima">
+                    <div class="attr variable">
+            <span class="name">time_akima</span>        =
+<span class="default_value">0.0005841830006829696</span>
+
+        
+    </div>
+    <a class="headerlink" href="#time_akima"></a>
+    
+    
+
+                </section>
+                <section id="y_pchip">
+                    <div class="attr variable">
+            <span class="name">y_pchip</span>        =
+<input id="y_pchip-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+            <label class="view-value-button pdoc-button" for="y_pchip-view-value"></label><span class="default_value">array([884.77      , 759.71437174, 612.97      , 541.42599011,
+       476.19630123, 417.50370354, 365.57096722, 320.62086246,
+       282.87615944, 252.55962834, 229.89403935, 215.10216265,
+       208.40676843, 215.08837273, 220.26027263])</span>
+
+        
+    </div>
+    <a class="headerlink" href="#y_pchip"></a>
+    
+    
+
+                </section>
+                <section id="y_akima">
+                    <div class="attr variable">
+            <span class="name">y_akima</span>        =
+<input id="y_akima-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+            <label class="view-value-button pdoc-button" for="y_akima-view-value"></label><span class="default_value">array([884.77      , 758.64641709, 612.97      , 507.97089358,
+       421.688041  , 352.46163947, 298.63188624, 258.53897853,
+       230.52311357, 212.9244886 , 204.08330083, 202.33974751,
+       206.03402586, 215.45845834, 220.05502147])</span>
+
+        
+    </div>
+    <a class="headerlink" href="#y_akima"></a>
+    
+    
+
+                </section>
+                <section id="y_linear">
+                    <div class="attr variable">
+            <span class="name">y_linear</span>        =
+<input id="y_linear-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+            <label class="view-value-button pdoc-button" for="y_linear-view-value"></label><span class="default_value">array([884.77      , 757.81166667, 612.97      , 573.68400854,
+       534.39801707, 495.11202561, 455.82603415, 416.54004269,
+       377.25405122, 337.96805976, 298.6820683 , 259.39607683,
+       220.11008537, 214.82914798, 219.144     ])</span>
+
+        
+    </div>
+    <a class="headerlink" href="#y_linear"></a>
+    
+    
+
+                </section>
+                <section id="rmse_pchip">
+                    <div class="attr variable">
+            <span class="name">rmse_pchip</span>        =
+<span class="default_value">np.float64(66.21074021262388)</span>
+
+        
+    </div>
+    <a class="headerlink" href="#rmse_pchip"></a>
+    
+            <div class="docstring"><p>float: RMSE of PCHIP interpolation vs analytical</p>
+</div>
+
+
+                </section>
+                <section id="rmse_akima">
+                    <div class="attr variable">
+            <span class="name">rmse_akima</span>        =
+<span class="default_value">np.float64(89.6533564311024)</span>
+
+        
+    </div>
+    <a class="headerlink" href="#rmse_akima"></a>
+    
+            <div class="docstring"><p>float: RMSE of Akima interpolation vs analytical</p>
+</div>
+
+
+                </section>
+                <section id="rmse_linear">
+                    <div class="attr variable">
+            <span class="name">rmse_linear</span>        =
+<span class="default_value">np.float64(60.05156282332713)</span>
+
+        
+    </div>
+    <a class="headerlink" href="#rmse_linear"></a>
+    
+            <div class="docstring"><p>float: RMSE of linear interpolation vs analytical</p>
+</div>
+
+
+                </section>
+                <section id="mae_pchip">
+                    <div class="attr variable">
+            <span class="name">mae_pchip</span>        =
+<span class="default_value">np.float64(52.832882872036365)</span>
+
+        
+    </div>
+    <a class="headerlink" href="#mae_pchip"></a>
+    
+            <div class="docstring"><p>float: MAE of PCHIP interpolation vs analytical</p>
+</div>
+
+
+                </section>
+                <section id="mae_akima">
+                    <div class="attr variable">
+            <span class="name">mae_akima</span>        =
+<span class="default_value">np.float64(79.05556369243595)</span>
+
+        
+    </div>
+    <a class="headerlink" href="#mae_akima"></a>
+    
+            <div class="docstring"><p>float: MAE of Akima interpolation vs analytical</p>
+</div>
+
+
+                </section>
+                <section id="mae_linear">
+                    <div class="attr variable">
+            <span class="name">mae_linear</span>        =
+<span class="default_value">np.float64(45.273624098756294)</span>
+
+        
+    </div>
+    <a class="headerlink" href="#mae_linear"></a>
+    
+            <div class="docstring"><p>float: MAE of linear interpolation vs analytical</p>
+</div>
+
+
+                </section>
+                <section id="metrics_data">
+                    <div class="attr variable">
+            <span class="name">metrics_data</span>        =
+<input id="metrics_data-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+            <label class="view-value-button pdoc-button" for="metrics_data-view-value"></label><span class="default_value">{&#39;Interpolation Method&#39;: [&#39;Linear&#39;, &#39;PCHIP&#39;, &#39;Akima&#39;], &#39;MAE (Hz)&#39;: [np.float64(45.273624098756294), np.float64(52.832882872036365), np.float64(79.05556369243595)], &#39;RMSE (Hz)&#39;: [np.float64(60.05156282332713), np.float64(66.21074021262388), np.float64(89.6533564311024)], &#39;Execution Time (ms)&#39;: [338.0085219996545, 0.8833410001898301, 0.5841830006829696]}</span>
+
+        
+    </div>
+    <a class="headerlink" href="#metrics_data"></a>
+    
+            <div class="docstring"><p>table: comparison of each interpolation method (RMSE, MAE, and timing)</p>
+</div>
+
+
+                </section>
+                <section id="metrics_df">
+                    <div class="attr variable">
+            <span class="name">metrics_df</span>        =
+<input id="metrics_df-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+            <label class="view-value-button pdoc-button" for="metrics_df-view-value"></label><span class="default_value">  Interpolation Method   MAE (Hz)  RMSE (Hz)  Execution Time (ms)
+0               Linear  45.273624  60.051563           338.008522
+1                PCHIP  52.832883  66.210740             0.883341
+2                Akima  79.055564  89.653356             0.584183</span>
+
+        
+    </div>
+    <a class="headerlink" href="#metrics_df"></a>
+    
+    
 
                 </section>
     </main>
