@@ -1,3 +1,13 @@
+"""
+Hybrid Rocket Engine Acoustic Frequency Simulator - Main Script.
+
+This script coordinates the simulation workflow: it loads experimental
+hotfire data, runs analytical oscillation calculations, executes multiple
+interpolation methods (Linear, PCHIP, Akima), evaluates their execution times
+and prediction accuracies (MAE, RMSE), and finally sizes an optimal
+acoustic liner to mitigate target frequencies.
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -5,41 +15,52 @@ import sys
 import importlib
 import time
 
+if 'oscillations' in sys.modules:
+    importlib.reload(sys.modules['oscillations'])
+if 'pchipinterpolation' in sys.modules:
+    importlib.reload(sys.modules['pchipinterpolation'])
+if 'akimainterpolation' in sys.modules:
+    importlib.reload(sys.modules['akimainterpolation'])
+if 'linearinterpolation' in sys.modules:
+    importlib.reload(sys.modules['linearinterpolation'])
+from oscillations import primary_oscillation
+from pchipinterpolation import plot_pchip_interpolation
+from akimainterpolation import plot_akima_interpolation
+from linearinterpolation import plot_linear_interpolation
+
+# Engine parameters
+mdot = 1.5 
+"""float: oxidser mass flow [kg/s]"""
+OF_ratio = 6
+"""float: oxidiser/fuel ratio"""
+P_c = 1500000
+"""float: chamber pressure [Pa]"""
+L = 0.36
+"""float: length of chamber [metres]"""
+R = 302.3
+"""float: gas constant [J/(kg*K)]"""
+T_av = 2700
+"""float: temperature [Kelvin]"""
+
+# Measured fuel grain diameter data and frequency data from Matlab
+D_fuelgrain = np.array([0.045, 0.07577, 0.05, 0.078, 0.048, 0.083])
+"""array: fuel grain inner diameter [m]"""
+solaris_freqs = np.array([884.77, 208.01, 612.97, 216.80, 732.42, 222.66])
+"""array: frequencies determined from hotfire data [Hz]"""
+
+# Define the range of diameters to calculate
+D_min = np.arange(0.045, 0.080, 0.0025)
+"""array: desired analysed diameters [m]"""
+
+# Call analytical frequency function
+freqs = primary_oscillation(mdot, OF_ratio, P_c, L, R, T_av, D_min)
+"""array: frequencies determined from oscillation.py using D_min [Hz]"""
+
+# Generate a fine range of diameter values for a smooth curve
+D_fine = np.linspace(D_fuelgrain.min(), D_fuelgrain.max(), 300)
+"""array: range of diameters to be interpolated [m]"""
+
 if __name__ == "__main__":
-
-  if 'oscillations' in sys.modules:
-      importlib.reload(sys.modules['oscillations'])
-  if 'pchipinterpolation' in sys.modules:
-      importlib.reload(sys.modules['pchipinterpolation'])
-  if 'akimainterpolation' in sys.modules:
-      importlib.reload(sys.modules['akimainterpolation'])
-  if 'linearinterpolation' in sys.modules:
-      importlib.reload(sys.modules['linearinterpolation'])
-  from oscillations import primary_oscillation
-  from pchipinterpolation import plot_pchip_interpolation
-  from akimainterpolation import plot_akima_interpolation
-  from linearinterpolation import plot_linear_interpolation
-
-  # Engine parameters
-  mdot = 1.5 # oxidiser mass flow [kg/s]
-  OF_ratio = 6 # oxidiser/fuel ratio
-  P_c = 1500000 # chamber pressure [Pa]
-  L = 0.36 # length of chamber [metres]
-  R = 302.3 # gas constant [J/(kg*K)]
-  T_av = 2700 # temperature [Kelvin]
-
-  # Measured fuel grain diameter data and frequency data from Matlab
-  D_fuelgrain = np.array([0.045, 0.07577, 0.05, 0.078, 0.048, 0.083])
-  solaris_freqs = np.array([884.77, 208.01, 612.97, 216.80, 732.42, 222.66])
-
-  # Define the range of diameters to calculate
-  D_min = np.arange(0.045, 0.080, 0.0025)
-
-  # Call analytical frequency function
-  freqs = primary_oscillation(mdot, OF_ratio, P_c, L, R, T_av, D_min)
-
-  # Generate a fine range of diameter values for a smooth curve
-  D_fine = np.linspace(D_fuelgrain.min(), D_fuelgrain.max(), 300)
 
   # Timing Regime for Linear
   t0_linear = time.perf_counter()
