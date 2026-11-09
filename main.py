@@ -60,60 +60,60 @@ freqs = primary_oscillation(mdot, OF_ratio, P_c, L, R, T_av, D_min)
 D_fine = np.linspace(D_fuelgrain.min(), D_fuelgrain.max(), 300)
 """array: range of diameters to be interpolated [m]"""
 
+if __name__ == "__main__":
+  # Timing Regime for Linear
+  t0_linear = time.perf_counter()
+  linear_model = plot_linear_interpolation(D_fuelgrain, solaris_freqs)
+  freqs_linear = linear_model(D_fine)
+  t1_linear = time.perf_counter()
+  time_linear = t1_linear - t0_linear
 
-# Timing Regime for Linear
-t0_linear = time.perf_counter()
-linear_model = plot_linear_interpolation(D_fuelgrain, solaris_freqs)
-freqs_linear = linear_model(D_fine)
-t1_linear = time.perf_counter()
-time_linear = t1_linear - t0_linear
+  # Timing Regime for PCHIP
+  t0_pchip = time.perf_counter()
+  pchip_model = plot_pchip_interpolation(D_fuelgrain, solaris_freqs)
+  freqs_pchip = pchip_model(D_fine)
+  t1_pchip = time.perf_counter()
+  time_pchip = t1_pchip - t0_pchip
 
-# Timing Regime for PCHIP
-t0_pchip = time.perf_counter()
-pchip_model = plot_pchip_interpolation(D_fuelgrain, solaris_freqs)
-freqs_pchip = pchip_model(D_fine)
-t1_pchip = time.perf_counter()
-time_pchip = t1_pchip - t0_pchip
+  # Timing Regime for Akima
+  t0_akima = time.perf_counter()
+  akima_model = plot_akima_interpolation(D_fuelgrain, solaris_freqs)
+  freqs_akima = akima_model(D_fine)
+  t1_akima = time.perf_counter()
+  time_akima = t1_akima - t0_akima
 
-# Timing Regime for Akima
-t0_akima = time.perf_counter()
-akima_model = plot_akima_interpolation(D_fuelgrain, solaris_freqs)
-freqs_akima = akima_model(D_fine)
-t1_akima = time.perf_counter()
-time_akima = t1_akima - t0_akima
+  # Figure 1: Overlaid Plot (just experimental data)
+  plt.figure(figsize=(8, 5))
+  plt.scatter(D_fuelgrain, solaris_freqs, color='black', zorder=5, label='Experimental Points')
+  plt.plot(D_fine, freqs_pchip, color='green', label='PCHIP Interpolation')
+  plt.plot(D_fine, freqs_akima, color='red', label='Akima Interpolation')
+  plt.plot(D_fine, freqs_linear, color='orange', label='Linear Interpolation')
+  plt.title('Comparison of Analytical Frequencies, PCHIP, and Akima Experimental Trends')
+  plt.xlabel('Fuel Grain Port Diameter (d) [m]')
+  plt.ylabel('Frequency (f) [Hz]')
+  plt.grid(True, which="both", ls="--", alpha=0.5)
+  plt.legend()
+  plt.show()
 
-# Figure 1: Overlaid Plot (just experimental data)
-plt.figure(figsize=(8, 5))
-plt.scatter(D_fuelgrain, solaris_freqs, color='black', zorder=5, label='Experimental Points')
-plt.plot(D_fine, freqs_pchip, color='green', label='PCHIP Interpolation')
-plt.plot(D_fine, freqs_akima, color='red', label='Akima Interpolation')
-plt.plot(D_fine, freqs_linear, color='orange', label='Linear Interpolation')
-plt.title('Comparison of Analytical Frequencies, PCHIP, and Akima Experimental Trends')
-plt.xlabel('Fuel Grain Port Diameter (d) [m]')
-plt.ylabel('Frequency (f) [Hz]')
-plt.grid(True, which="both", ls="--", alpha=0.5)
-plt.legend()
-plt.show()
+  # Figure 2: Overlaid Plot (with analytical frequencies)
+  plt.figure(figsize=(8, 5))
+  plt.scatter(D_min, freqs, color='black', marker='s', label='Analytical Frequencies')
+  plt.plot(D_min, freqs, color='blue')
+  plt.scatter(D_fuelgrain, solaris_freqs, color='black', zorder=5, label='Experimental Points')
+  plt.plot(D_fine, freqs_pchip, color='green', label='PCHIP Interpolation')
+  plt.plot(D_fine, freqs_akima, color='red', label='Akima Interpolation')
+  plt.plot(D_fine, freqs_linear, color='orange', label='Linear Interpolation')
+  plt.title('Comparison of Analytical Frequencies and Interpolated Experimental Trends')
+  plt.xlabel('Fuel Grain Port Diameter (d) [m]')
+  plt.ylabel('Frequency (f) [Hz]')
+  plt.grid(True, which="both", ls="--", alpha=0.5)
+  plt.legend()
+  plt.show()
 
-# Figure 2: Overlaid Plot (with analytical frequencies)
-plt.figure(figsize=(8, 5))
-plt.scatter(D_min, freqs, color='black', marker='s', label='Analytical Frequencies')
-plt.plot(D_min, freqs, color='blue')
-plt.scatter(D_fuelgrain, solaris_freqs, color='black', zorder=5, label='Experimental Points')
-plt.plot(D_fine, freqs_pchip, color='green', label='PCHIP Interpolation')
-plt.plot(D_fine, freqs_akima, color='red', label='Akima Interpolation')
-plt.plot(D_fine, freqs_linear, color='orange', label='Linear Interpolation')
-plt.title('Comparison of Analytical Frequencies and Interpolated Experimental Trends')
-plt.xlabel('Fuel Grain Port Diameter (d) [m]')
-plt.ylabel('Frequency (f) [Hz]')
-plt.grid(True, which="both", ls="--", alpha=0.5)
-plt.legend()
-plt.show()
-
-# Evaluate interpolations at analytical diameter values
-y_pchip = pchip_model(D_min)
-y_akima = akima_model(D_min)
-y_linear = linear_model(D_min)
+  # Evaluate interpolations at analytical diameter values
+  y_pchip = pchip_model(D_min)
+  y_akima = akima_model(D_min)
+  y_linear = linear_model(D_min)
 
 # Calculate RMSE
 rmse_pchip = np.sqrt(np.mean((freqs - y_pchip) ** 2))
