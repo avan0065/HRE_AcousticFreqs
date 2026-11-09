@@ -186,12 +186,12 @@ acoustic liner to mitigate target frequencies.</p>
 </span><span id="L-30"><a href="#L-30"><span class="linenos"> 30</span></a>
 </span><span id="L-31"><a href="#L-31"><span class="linenos"> 31</span></a><span class="c1"># Exclude some variables from pdoc</span>
 </span><span id="L-32"><a href="#L-32"><span class="linenos"> 32</span></a><span class="n">__pdoc__</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="L-33"><a href="#L-33"><span class="linenos"> 33</span></a>    <span class="s2">"time_pchip"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-34"><a href="#L-34"><span class="linenos"> 34</span></a>    <span class="s2">"time_akima"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a>    <span class="s2">"time_linear"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a>    <span class="s2">"linear_model"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a>    <span class="s2">"pchip_model"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a>    <span class="s2">"akima_model"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos"> 33</span></a>    <span class="s2">"time_pchip"</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos"> 34</span></a>    <span class="s2">"time_akima"</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a>    <span class="s2">"time_linear"</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a>    <span class="s2">"linear_model"</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a>    <span class="s2">"pchip_model"</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a>    <span class="s2">"akima_model"</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
 </span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a><span class="p">}</span>
 </span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a>
 </span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a><span class="c1"># Engine parameters</span>
@@ -651,7 +651,7 @@ acoustic liner to mitigate target frequencies.</p>
                 <section id="time_linear">
                     <div class="attr variable">
             <span class="name">time_linear</span>        =
-<span class="default_value">0.3483708570001909</span>
+<span class="default_value">0.32338555099977384</span>
 
         
     </div>
@@ -766,7 +766,7 @@ acoustic liner to mitigate target frequencies.</p>
                 <section id="time_pchip">
                     <div class="attr variable">
             <span class="name">time_pchip</span>        =
-<span class="default_value">0.0005956929999229033</span>
+<span class="default_value">0.0005323980003595352</span>
 
         
     </div>
@@ -881,7 +881,7 @@ acoustic liner to mitigate target frequencies.</p>
                 <section id="time_akima">
                     <div class="attr variable">
             <span class="name">time_akima</span>        =
-<span class="default_value">0.000310471999910078</span>
+<span class="default_value">0.0003279009997640969</span>
 
         
     </div>
@@ -1034,7 +1034,7 @@ acoustic liner to mitigate target frequencies.</p>
                     <div class="attr variable">
             <span class="name">metrics_data</span>        =
 <input id="metrics_data-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-            <label class="view-value-button pdoc-button" for="metrics_data-view-value"></label><span class="default_value">{&#39;Interpolation Method&#39;: [&#39;Linear&#39;, &#39;PCHIP&#39;, &#39;Akima&#39;], &#39;MAE (Hz)&#39;: [np.float64(45.273624098756294), np.float64(52.832882872036365), np.float64(79.05556369243595)], &#39;RMSE (Hz)&#39;: [np.float64(60.05156282332713), np.float64(66.21074021262388), np.float64(89.6533564311024)], &#39;Execution Time (ms)&#39;: [348.3708570001909, 0.5956929999229033, 0.310471999910078]}</span>
+            <label class="view-value-button pdoc-button" for="metrics_data-view-value"></label><span class="default_value">{&#39;Interpolation Method&#39;: [&#39;Linear&#39;, &#39;PCHIP&#39;, &#39;Akima&#39;], &#39;MAE (Hz)&#39;: [np.float64(45.273624098756294), np.float64(52.832882872036365), np.float64(79.05556369243595)], &#39;RMSE (Hz)&#39;: [np.float64(60.05156282332713), np.float64(66.21074021262388), np.float64(89.6533564311024)], &#39;Execution Time (ms)&#39;: [323.38555099977384, 0.5323980003595352, 0.3279009997640969]}</span>
 
         
     </div>
@@ -1050,9 +1050,9 @@ acoustic liner to mitigate target frequencies.</p>
             <span class="name">metrics_df</span>        =
 <input id="metrics_df-view-value" class="view-value-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
             <label class="view-value-button pdoc-button" for="metrics_df-view-value"></label><span class="default_value">  Interpolation Method   MAE (Hz)  RMSE (Hz)  Execution Time (ms)
-0               Linear  45.273624  60.051563           348.370857
-1                PCHIP  52.832883  66.210740             0.595693
-2                Akima  79.055564  89.653356             0.310472</span>
+0               Linear  45.273624  60.051563           323.385551
+1                PCHIP  52.832883  66.210740             0.532398
+2                Akima  79.055564  89.653356             0.327901</span>
 
         
     </div>
