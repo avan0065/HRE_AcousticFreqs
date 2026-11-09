@@ -7,15 +7,6 @@ interpolation methods (Linear, PCHIP, Akima), evaluates their execution times
 and prediction accuracies (MAE, RMSE), and finally sizes an optimal
 acoustic liner to mitigate target frequencies.
 """
-# Exclude some variables from pdoc
-__pdoc__ = {
-    "time_pchip": False,
-    "time_akima": False,
-    "time_linear": False,
-    "linear_model": False,
-    "pchip_model": False,
-    "akima_model": False,
-}
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -36,6 +27,16 @@ from oscillations import primary_oscillation
 from pchipinterpolation import plot_pchip_interpolation
 from akimainterpolation import plot_akima_interpolation
 from linearinterpolation import plot_linear_interpolation
+
+# Exclude some variables from pdoc
+__pdoc__ = {
+    "time_pchip": False,
+    "time_akima": False,
+    "time_linear": False,
+    "linear_model": False,
+    "pchip_model": False,
+    "akima_model": False,
+}
 
 # Engine parameters
 mdot = 1.5 
