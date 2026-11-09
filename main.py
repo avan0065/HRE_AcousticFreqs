@@ -118,13 +118,19 @@ if __name__ == "__main__":
 
   # Calculate RMSE
   rmse_pchip = np.sqrt(np.mean((freqs - y_pchip) ** 2))
+  """float: RMSE of PCHIP interpolation vs analytical"""
   rmse_akima = np.sqrt(np.mean((freqs - y_akima) ** 2))
+  """float: RMSE of Akima interpolation vs analytical"""
   rmse_linear = np.sqrt(np.mean((freqs - y_linear) ** 2))
+  """float: RMSE of linear interpolation vs analytical"""
 
   # Calculate MAE
   mae_pchip = np.mean(np.abs(freqs - y_pchip))
+  """float: MAE of PCHIP interpolation vs analytical"""
   mae_akima = np.mean(np.abs(freqs - y_akima))
+  """float: MAE of Akima interpolation vs analytical"""
   mae_linear = np.mean(np.abs(freqs - y_linear))
+  """float: MAE of linear interpolation vs analytical"""
 
   # Create comparison table
   metrics_data = {
@@ -133,6 +139,7 @@ if __name__ == "__main__":
       'RMSE (Hz)': [rmse_linear, rmse_pchip, rmse_akima],
       'Execution Time (ms)': [time_linear * 1000, time_pchip * 1000, time_akima * 1000]
   }
+  """table: comparison of each interpolation method (RMSE, MAE, and timing)"""
   metrics_df = pd.DataFrame(metrics_data)
   print("\n--- Performance Evaluation Metrics ---")
   print(metrics_df.to_string(index=False))
@@ -143,5 +150,6 @@ if __name__ == "__main__":
 
   # Calculate optimal liner size
   target_freq, best_diameter_m, best_freq = acoustic_liner(freqs_pchip, R)
+  """floats: target frequency and optimal diameter for a liner"""
   print(f"The targeted frequency of the engine is {target_freq:.2f} Hz.")
   print(f"The optimal liner hole diameter is {best_diameter_m*1000:.2f} mm with a target frequency of {best_freq:.2f} Hz.")
